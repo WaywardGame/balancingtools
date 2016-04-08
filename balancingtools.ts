@@ -283,7 +283,7 @@ class Mod extends Mods.Mod {
 
 				game.passTurn();
 			}));
-			
+
 			this.getDialog("Developer Tools").append(this.container);
 		}, 100);
 	}

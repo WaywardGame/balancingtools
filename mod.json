@@ -2,14 +2,13 @@
 	"name": "Balancing Tools",
 	"description": "Adds a set of balancing tools to the developer tools mod menu." ,
 	"version": "1.0.0",
-	"author": "Drathy",
+	"author": "Spacetech",
 	"required_mods": [
 		"474819610"
 	],
 	"hooks": [
 		"OnShowInGameScreen",
-		"OnGameEnd",
-        "OnUnload"
+		"OnGameEnd"
 	],
 	"compatible_minor_versions": [
 		0
