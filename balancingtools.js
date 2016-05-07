@@ -30,7 +30,7 @@ var Mod = (function (_super) {
                 for (var i = items.length - 1; i >= 0; i--) {
                     Item.remove(items[i]);
                 }
-                ui.getBody().find("button:contains('Refresh Stats')").first().trigger('click');
+                ui.getBody().find("button:contains('Refresh Stats')").first().trigger("click");
                 var skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Archery, SkillType.Throwing];
                 var skillAmount = 0;
                 var list;
@@ -248,7 +248,7 @@ var Mod = (function (_super) {
                 }
                 game.passTurn();
             }));
-            _this.getDialog("Developer Tools").append(_this.container);
+            _this.getDialog("Developer Tools").find(".inner").append(_this.container);
         }, 100);
     };
     Mod.prototype.onGameEnd = function (playerState) {

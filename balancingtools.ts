@@ -39,12 +39,12 @@ class Mod extends Mods.Mod {
 
 				// delete all items
 				var items = Item.getItemsInContainer(player.inventory);
-				for (var i = items.length - 1; i >= 0; i--) {
+				for (let i = items.length - 1; i >= 0; i--) {
 					Item.remove(items[i]);
 				}
 
 				// refresh stats (via Developer Tools)
-				ui.getBody().find("button:contains('Refresh Stats')").first().trigger('click');
+				ui.getBody().find("button:contains('Refresh Stats')").first().trigger("click");
 
 				// Equip and set skill based on input
 				var skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Archery, SkillType.Throwing];
@@ -248,7 +248,7 @@ class Mod extends Mods.Mod {
 				}
 
 				if (list) {
-					for (var i = 0; i < list.length; i++) {
+					for (let i = 0; i < list.length; i++) {
 						var spawnInfo = list[i];
 						var item = Item.create(spawnInfo.itemType);
 						if (spawnInfo.equipType) {
@@ -257,7 +257,7 @@ class Mod extends Mods.Mod {
 					}
 				}
 
-				for (var i = 0; i < skillList.length; i++) {
+				for (let i = 0; i < skillList.length; i++) {
 					player.skills[skillList[i]].percent = skillAmount;
 					player.skills[skillList[i]].core = skillAmount;
 				}
@@ -284,7 +284,7 @@ class Mod extends Mods.Mod {
 				game.passTurn();
 			}));
 
-			this.getDialog("Developer Tools").append(this.container);
+			this.getDialog("Developer Tools").find(".inner").append(this.container);
 		}, 100);
 	}
 
