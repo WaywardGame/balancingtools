@@ -19,6 +19,9 @@ var Mod = (function (_super) {
             this.container.remove();
         }
     };
+    Mod.prototype.canMonsterMove = function (monsterId, monster, tile) {
+        return false;
+    };
     Mod.prototype.onShowInGameScreen = function () {
         var _this = this;
         setTimeout(function () {

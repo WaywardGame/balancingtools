@@ -26,8 +26,13 @@ class Mod extends Mods.Mod {
 	///////////////////////////////////////////////////
 	// Hooks
 
+	// Turn off monster movement
+	public canMonsterMove(monsterId: number, monster: IMonster, tile?: ITile): boolean {
+		return false;
+	}
+
 	public onShowInGameScreen(): void {
-		// wait a bit for developer tools to create its dialog
+		// Wait a bit for developer tools to create its dialog
 		setTimeout(() => {
 			this.container = $("<div></div>");
 

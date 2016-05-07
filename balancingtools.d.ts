@@ -9,6 +9,7 @@ declare class Mod extends Mods.Mod {
     onLoad(saveData: any): void;
     onSave(): any;
     onUnload(): void;
+    canMonsterMove(monsterId: number, monster: IMonster, tile?: ITile): boolean;
     onShowInGameScreen(): void;
     onGameEnd(playerState: PlayerState): void;
 }
