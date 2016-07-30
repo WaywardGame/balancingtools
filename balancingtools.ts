@@ -40,10 +40,10 @@ class Mod extends Mods.Mod {
 
 			this.container.append($("<button>Set Difficulty</button>").click(() => {
 
-				var difficulty = parseInt($("body").find("#difficulty").val(), 10);
+				let difficulty = parseInt($("body").find("#difficulty").val(), 10);
 
 				// delete all items
-				var items = Item.getItemsInContainer(player.inventory);
+				let items = Item.getItemsInContainer(player.inventory);
 				for (let i = items.length - 1; i >= 0; i--) {
 					Item.remove(items[i]);
 				}
@@ -52,10 +52,10 @@ class Mod extends Mods.Mod {
 				ui.getBody().find("button:contains('Refresh Stats')").first().trigger("click");
 
 				// Equip and set skill based on input
-				var skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Archery, SkillType.Throwing];
-				var skillAmount = 0;
+				let skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Archery, SkillType.Throwing];
+				let skillAmount = 0;
 
-				var list: IItemSpawnInfo[];
+				let list: IItemSpawnInfo[];
 
 				switch (difficulty) {
 					case 1:
@@ -254,8 +254,8 @@ class Mod extends Mods.Mod {
 
 				if (list) {
 					for (let i = 0; i < list.length; i++) {
-						var spawnInfo = list[i];
-						var item = Item.create(spawnInfo.itemType);
+						let spawnInfo = list[i];
+						let item = Item.create(spawnInfo.itemType);
 						if (spawnInfo.equipType) {
 							ui.setEquipSlot(spawnInfo.equipType, item.id);
 						}
@@ -273,7 +273,7 @@ class Mod extends Mods.Mod {
 			this.container.append($("<button>Spawn Monster Line</button>").click(() => {
 
 				// Spawn stationary monsters in a line
-				for (var i = 0; i < monsters.length; i++) {
+				for (let i = 0; i < monsters.length; i++) {
 					if (monsters[i]) {
 						let x = player.x + 2;
 						let y = player.y + i;

@@ -1,7 +1,7 @@
 {
 	"name": "Balancing Tools",
 	"description": "Adds a set of balancing tools to the developer tools mod menu." ,
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": "Spacetech",
 	"required_mods": [
 		"474819610"
@@ -12,7 +12,7 @@
 		"CanMonsterMove"
 	],
 	"compatible_minor_versions": [
-		0
+		1
 	],
 	"unloadable": true,
 	"files": [
