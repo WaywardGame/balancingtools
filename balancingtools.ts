@@ -5,13 +5,23 @@ interface IItemSpawnInfo {
 	equipType?: EquipType;
 }
 
-class Mod extends Mods.Mod {
+export default class Mod extends Mods.Mod {
 	private container: JQuery;
 
 	public onInitialize(saveDataGlobal: any): any {
 	}
 
 	public onLoad(saveData: any): void {
+		const developerTools = Mods.getLoadedModByName("Developer Tools");
+		if (developerTools) {
+			Utilities.Console.log(Source.Mod, `Found developer tools mod from balancing tools`, developerTools);
+
+			const modObject = <any>developerTools.object;
+			if (modObject) {
+				const ret = modObject.testFunction();
+				Utilities.Console.log(Source.Mod, `Balancing tools got ${ret} from developer tools`);
+			}
+		}
 	}
 
 	public onSave(): any {
@@ -26,8 +36,8 @@ class Mod extends Mods.Mod {
 	///////////////////////////////////////////////////
 	// Hooks
 
-	// Turn off monster movement
-	public canMonsterMove(monsterId: number, monster: IMonster, tile?: ITile): boolean {
+	// Turn off creature movement
+	public canCreatureMove(creatureId: number, creature: Creature.ICreature, tile?: Terrain.ITile): boolean {
 		return false;
 	}
 
@@ -270,19 +280,19 @@ class Mod extends Mods.Mod {
 				game.passTurn();
 			}));
 
-			this.container.append($("<button>Spawn Monster Line</button>").click(() => {
+			this.container.append($("<button>Spawn Creature Line</button>").click(() => {
 
-				// Spawn stationary monsters in a line
-				for (let i = 0; i < monsters.length; i++) {
-					if (monsters[i]) {
+				// Spawn stationary creatures in a line
+				for (let i = 0; i < Creature.defines.length; i++) {
+					if (Creature.defines[i]) {
 						let x = player.x + 2;
 						let y = player.y + i;
 
 						game.changeTile(TerrainType.Dirt, x, y, player.z, false);
 						game.changeTile(TerrainType.Dirt, x + 1, y, player.z, false);
 
-						game.spawnMonster(i, x, y, player.z, true);
-						game.spawnMonster(i, x + 1, y, player.z, true, true);
+						Creature.spawn(i, x, y, player.z, true);
+						Creature.spawn(i, x + 1, y, player.z, true, true);
 					}
 				}
 

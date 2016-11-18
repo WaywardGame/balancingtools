@@ -1,7 +1,7 @@
 # Balancing Tools
 Adds a set of balancing tools to the developer tools mod menu. The Developers Tools mod is required to run this.
 
-The set of tools allows you to change into different sets of skills and equipment and spawns columns of monsters in order to test combat balance.
+The set of tools allows you to change into different sets of skills and equipment and spawns columns of creatures in order to test combat balance.
 
 ## Cloning:
 ```
