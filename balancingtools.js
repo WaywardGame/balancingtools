@@ -1,16 +1,17 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", "Enums", "mod/Mod", "Utilities"], function (require, exports, Enums_1, Mod_1, Utilities) {
     "use strict";
-    class Mod extends Mods.Mod {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    class BalancingTools extends Mod_1.default {
         onInitialize(saveDataGlobal) {
         }
         onLoad(saveData) {
-            const developerTools = Mods.getLoadedModByName("Developer Tools");
+            const developerTools = modManager.getLoadedModByName("Developer Tools");
             if (developerTools) {
-                Utilities.Console.log(Source.Mod, `Found developer tools mod from balancing tools`, developerTools);
-                const modObject = developerTools.object;
+                Utilities.Console.log(Enums_1.Source.Mod, `Found developer tools mod from balancing tools`, developerTools);
+                const modObject = developerTools.instance;
                 if (modObject) {
                     const ret = modObject.testFunction();
-                    Utilities.Console.log(Source.Mod, `Balancing tools got ${ret} from developer tools`);
+                    Utilities.Console.log(Enums_1.Source.Mod, `Balancing tools got ${ret} from developer tools`);
                 }
             }
         }
@@ -29,49 +30,49 @@ define(["require", "exports"], function (require, exports) {
                 this.container = $("<div></div>");
                 this.container.append($('<input id="difficulty" type="number" value="0" min="0" max="4" />'));
                 this.container.append($("<button>Set Difficulty</button>").click(() => {
-                    let difficulty = parseInt($("body").find("#difficulty").val(), 10);
-                    let items = Item.getItemsInContainer(player.inventory);
+                    const difficulty = parseInt($("body").find("#difficulty").val(), 10);
+                    const items = itemManager.getItemsInContainer(localPlayer.inventory);
                     for (let i = items.length - 1; i >= 0; i--) {
-                        Item.remove(items[i]);
+                        itemManager.remove(items[i]);
                     }
                     ui.getBody().find("button:contains('Refresh Stats')").first().trigger("click");
-                    let skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Archery, SkillType.Throwing];
+                    const skillList = [Enums_1.SkillType.Tactics, Enums_1.SkillType.Parrying, Enums_1.SkillType.Archery, Enums_1.SkillType.Throwing];
                     let skillAmount = 0;
                     let list;
                     switch (difficulty) {
                         case 1:
                             list = [
                                 {
-                                    itemType: ItemType.BarkShield,
-                                    equipType: EquipType.LeftHand
+                                    itemType: Enums_1.ItemType.BarkShield,
+                                    equipType: Enums_1.EquipType.LeftHand
                                 }, {
-                                    itemType: ItemType.WoodenSpear,
-                                    equipType: EquipType.RightHand
+                                    itemType: Enums_1.ItemType.WoodenSpear,
+                                    equipType: Enums_1.EquipType.RightHand
                                 }, {
-                                    itemType: ItemType.BarkTunic,
-                                    equipType: EquipType.Chest
+                                    itemType: Enums_1.ItemType.BarkTunic,
+                                    equipType: Enums_1.EquipType.Chest
                                 }, {
-                                    itemType: ItemType.BarkLeggings,
-                                    equipType: EquipType.Legs
+                                    itemType: Enums_1.ItemType.BarkLeggings,
+                                    equipType: Enums_1.EquipType.Legs
                                 }, {
-                                    itemType: ItemType.Skullcap,
-                                    equipType: EquipType.Head
+                                    itemType: Enums_1.ItemType.Skullcap,
+                                    equipType: Enums_1.EquipType.Head
                                 }, {
-                                    itemType: ItemType.Bow
+                                    itemType: Enums_1.ItemType.Bow
                                 }, {
-                                    itemType: ItemType.WoodenArrow
+                                    itemType: Enums_1.ItemType.WoodenArrow
                                 }, {
-                                    itemType: ItemType.WoodenArrow
+                                    itemType: Enums_1.ItemType.WoodenArrow
                                 }, {
-                                    itemType: ItemType.WoodenArrow
+                                    itemType: Enums_1.ItemType.WoodenArrow
                                 }, {
-                                    itemType: ItemType.CordedSling
+                                    itemType: Enums_1.ItemType.CordedSling
                                 }, {
-                                    itemType: ItemType.StoneBullet
+                                    itemType: Enums_1.ItemType.StoneBullet
                                 }, {
-                                    itemType: ItemType.StoneBullet
+                                    itemType: Enums_1.ItemType.StoneBullet
                                 }, {
-                                    itemType: ItemType.StoneBullet
+                                    itemType: Enums_1.ItemType.StoneBullet
                                 }
                             ];
                             skillAmount = 15;
@@ -79,48 +80,48 @@ define(["require", "exports"], function (require, exports) {
                         case 2:
                             list = [
                                 {
-                                    itemType: ItemType.BarkShield,
-                                    equipType: EquipType.LeftHand
+                                    itemType: Enums_1.ItemType.BarkShield,
+                                    equipType: Enums_1.EquipType.LeftHand
                                 }, {
-                                    itemType: ItemType.StoneAxe,
-                                    equipType: EquipType.RightHand
+                                    itemType: Enums_1.ItemType.StoneAxe,
+                                    equipType: Enums_1.EquipType.RightHand
                                 }, {
-                                    itemType: ItemType.LeatherTunic,
-                                    equipType: EquipType.Chest
+                                    itemType: Enums_1.ItemType.LeatherTunic,
+                                    equipType: Enums_1.EquipType.Chest
                                 }, {
-                                    itemType: ItemType.LeatherPants,
-                                    equipType: EquipType.Legs
+                                    itemType: Enums_1.ItemType.LeatherPants,
+                                    equipType: Enums_1.EquipType.Legs
                                 }, {
-                                    itemType: ItemType.LeatherCap,
-                                    equipType: EquipType.Head
+                                    itemType: Enums_1.ItemType.LeatherCap,
+                                    equipType: Enums_1.EquipType.Head
                                 }, {
-                                    itemType: ItemType.LeatherBoots,
-                                    equipType: EquipType.Feet
+                                    itemType: Enums_1.ItemType.LeatherBoots,
+                                    equipType: Enums_1.EquipType.Feet
                                 }, {
-                                    itemType: ItemType.LeatherGorget,
-                                    equipType: EquipType.Neck
+                                    itemType: Enums_1.ItemType.LeatherGorget,
+                                    equipType: Enums_1.EquipType.Neck
                                 }, {
-                                    itemType: ItemType.LeatherGloves,
-                                    equipType: EquipType.Hands
+                                    itemType: Enums_1.ItemType.LeatherGloves,
+                                    equipType: Enums_1.EquipType.Hands
                                 }, {
-                                    itemType: ItemType.LeatherBelt,
-                                    equipType: EquipType.Belt
+                                    itemType: Enums_1.ItemType.LeatherBelt,
+                                    equipType: Enums_1.EquipType.Belt
                                 }, {
-                                    itemType: ItemType.ShortBow
+                                    itemType: Enums_1.ItemType.ShortBow
                                 }, {
-                                    itemType: ItemType.Arrow
+                                    itemType: Enums_1.ItemType.Arrow
                                 }, {
-                                    itemType: ItemType.Arrow
+                                    itemType: Enums_1.ItemType.Arrow
                                 }, {
-                                    itemType: ItemType.Arrow
+                                    itemType: Enums_1.ItemType.Arrow
                                 }, {
-                                    itemType: ItemType.LeatherSling
+                                    itemType: Enums_1.ItemType.LeatherSling
                                 }, {
-                                    itemType: ItemType.StoneBullet
+                                    itemType: Enums_1.ItemType.StoneBullet
                                 }, {
-                                    itemType: ItemType.StoneBullet
+                                    itemType: Enums_1.ItemType.StoneBullet
                                 }, {
-                                    itemType: ItemType.StoneBullet
+                                    itemType: Enums_1.ItemType.StoneBullet
                                 }
                             ];
                             skillAmount = 35;
@@ -128,48 +129,48 @@ define(["require", "exports"], function (require, exports) {
                         case 3:
                             list = [
                                 {
-                                    itemType: ItemType.WroughtIronShield,
-                                    equipType: EquipType.LeftHand
+                                    itemType: Enums_1.ItemType.WroughtIronShield,
+                                    equipType: Enums_1.EquipType.LeftHand
                                 }, {
-                                    itemType: ItemType.WroughtIronSword,
-                                    equipType: EquipType.RightHand
+                                    itemType: Enums_1.ItemType.WroughtIronSword,
+                                    equipType: Enums_1.EquipType.RightHand
                                 }, {
-                                    itemType: ItemType.WroughtIronBreastPlate,
-                                    equipType: EquipType.Chest
+                                    itemType: Enums_1.ItemType.WroughtIronBreastPlate,
+                                    equipType: Enums_1.EquipType.Chest
                                 }, {
-                                    itemType: ItemType.WroughtIronGreaves,
-                                    equipType: EquipType.Legs
+                                    itemType: Enums_1.ItemType.WroughtIronGreaves,
+                                    equipType: Enums_1.EquipType.Legs
                                 }, {
-                                    itemType: ItemType.WroughtIronHelmet,
-                                    equipType: EquipType.Head
+                                    itemType: Enums_1.ItemType.WroughtIronHelmet,
+                                    equipType: Enums_1.EquipType.Head
                                 }, {
-                                    itemType: ItemType.WroughtIronBoots,
-                                    equipType: EquipType.Feet
+                                    itemType: Enums_1.ItemType.WroughtIronBoots,
+                                    equipType: Enums_1.EquipType.Feet
                                 }, {
-                                    itemType: ItemType.WroughtIronGorget,
-                                    equipType: EquipType.Neck
+                                    itemType: Enums_1.ItemType.WroughtIronGorget,
+                                    equipType: Enums_1.EquipType.Neck
                                 }, {
-                                    itemType: ItemType.WroughtIronGauntlets,
-                                    equipType: EquipType.Hands
+                                    itemType: Enums_1.ItemType.WroughtIronGauntlets,
+                                    equipType: Enums_1.EquipType.Hands
                                 }, {
-                                    itemType: ItemType.LeatherBelt,
-                                    equipType: EquipType.Belt
+                                    itemType: Enums_1.ItemType.LeatherBelt,
+                                    equipType: Enums_1.EquipType.Belt
                                 }, {
-                                    itemType: ItemType.LongBow
+                                    itemType: Enums_1.ItemType.LongBow
                                 }, {
-                                    itemType: ItemType.WroughtIronArrow
+                                    itemType: Enums_1.ItemType.WroughtIronArrow
                                 }, {
-                                    itemType: ItemType.WroughtIronArrow
+                                    itemType: Enums_1.ItemType.WroughtIronArrow
                                 }, {
-                                    itemType: ItemType.WroughtIronArrow
+                                    itemType: Enums_1.ItemType.WroughtIronArrow
                                 }, {
-                                    itemType: ItemType.LeatherSling
+                                    itemType: Enums_1.ItemType.LeatherSling
                                 }, {
-                                    itemType: ItemType.WroughtIronBullet
+                                    itemType: Enums_1.ItemType.WroughtIronBullet
                                 }, {
-                                    itemType: ItemType.WroughtIronBullet
+                                    itemType: Enums_1.ItemType.WroughtIronBullet
                                 }, {
-                                    itemType: ItemType.WroughtIronBullet
+                                    itemType: Enums_1.ItemType.WroughtIronBullet
                                 }
                             ];
                             skillAmount = 60;
@@ -177,48 +178,48 @@ define(["require", "exports"], function (require, exports) {
                         case 4:
                             list = [
                                 {
-                                    itemType: ItemType.IronShield,
-                                    equipType: EquipType.LeftHand
+                                    itemType: Enums_1.ItemType.IronShield,
+                                    equipType: Enums_1.EquipType.LeftHand
                                 }, {
-                                    itemType: ItemType.IronSword,
-                                    equipType: EquipType.RightHand
+                                    itemType: Enums_1.ItemType.IronSword,
+                                    equipType: Enums_1.EquipType.RightHand
                                 }, {
-                                    itemType: ItemType.IronBreastplate,
-                                    equipType: EquipType.Chest
+                                    itemType: Enums_1.ItemType.IronBreastplate,
+                                    equipType: Enums_1.EquipType.Chest
                                 }, {
-                                    itemType: ItemType.IronGreaves,
-                                    equipType: EquipType.Legs
+                                    itemType: Enums_1.ItemType.IronGreaves,
+                                    equipType: Enums_1.EquipType.Legs
                                 }, {
-                                    itemType: ItemType.IronHelmet,
-                                    equipType: EquipType.Head
+                                    itemType: Enums_1.ItemType.IronHelmet,
+                                    equipType: Enums_1.EquipType.Head
                                 }, {
-                                    itemType: ItemType.IronBoots,
-                                    equipType: EquipType.Feet
+                                    itemType: Enums_1.ItemType.IronBoots,
+                                    equipType: Enums_1.EquipType.Feet
                                 }, {
-                                    itemType: ItemType.IronGorget,
-                                    equipType: EquipType.Neck
+                                    itemType: Enums_1.ItemType.IronGorget,
+                                    equipType: Enums_1.EquipType.Neck
                                 }, {
-                                    itemType: ItemType.IronGauntlets,
-                                    equipType: EquipType.Hands
+                                    itemType: Enums_1.ItemType.IronGauntlets,
+                                    equipType: Enums_1.EquipType.Hands
                                 }, {
-                                    itemType: ItemType.LeatherBelt,
-                                    equipType: EquipType.Belt
+                                    itemType: Enums_1.ItemType.LeatherBelt,
+                                    equipType: Enums_1.EquipType.Belt
                                 }, {
-                                    itemType: ItemType.CompositeBow
+                                    itemType: Enums_1.ItemType.CompositeBow
                                 }, {
-                                    itemType: ItemType.IronArrow
+                                    itemType: Enums_1.ItemType.IronArrow
                                 }, {
-                                    itemType: ItemType.IronArrow
+                                    itemType: Enums_1.ItemType.IronArrow
                                 }, {
-                                    itemType: ItemType.IronArrow
+                                    itemType: Enums_1.ItemType.IronArrow
                                 }, {
-                                    itemType: ItemType.LeatherSling
+                                    itemType: Enums_1.ItemType.LeatherSling
                                 }, {
-                                    itemType: ItemType.IronBullet
+                                    itemType: Enums_1.ItemType.IronBullet
                                 }, {
-                                    itemType: ItemType.IronBullet
+                                    itemType: Enums_1.ItemType.IronBullet
                                 }, {
-                                    itemType: ItemType.IronBullet
+                                    itemType: Enums_1.ItemType.IronBullet
                                 }
                             ];
                             skillAmount = 85;
@@ -226,31 +227,29 @@ define(["require", "exports"], function (require, exports) {
                     }
                     if (list) {
                         for (let i = 0; i < list.length; i++) {
-                            let spawnInfo = list[i];
-                            let item = Item.create(spawnInfo.itemType);
+                            const spawnInfo = list[i];
+                            const item = localPlayer.createItemInInventory(spawnInfo.itemType);
                             if (spawnInfo.equipType) {
-                                ui.setEquipSlot(spawnInfo.equipType, item.id);
+                                localPlayer.equip(item, spawnInfo.equipType, true);
                             }
                         }
                     }
                     for (let i = 0; i < skillList.length; i++) {
-                        player.skills[skillList[i]].percent = skillAmount;
-                        player.skills[skillList[i]].core = skillAmount;
+                        localPlayer.skills[skillList[i]].percent = skillAmount;
+                        localPlayer.skills[skillList[i]].core = skillAmount;
                     }
-                    game.passTurn();
+                    game.passTurn(localPlayer);
                 }));
                 this.container.append($("<button>Spawn Creature Line</button>").click(() => {
-                    for (let i = 0; i < Creature.defines.length; i++) {
-                        if (Creature.defines[i]) {
-                            let x = player.x + 2;
-                            let y = player.y + i;
-                            game.changeTile(TerrainType.Dirt, x, y, player.z, false);
-                            game.changeTile(TerrainType.Dirt, x + 1, y, player.z, false);
-                            Creature.spawn(i, x, y, player.z, true);
-                            Creature.spawn(i, x + 1, y, player.z, true, true);
-                        }
+                    for (const creatureType of Utilities.Enums.getValues(Enums_1.CreatureType)) {
+                        const x = localPlayer.x + 2;
+                        const y = localPlayer.y + creatureType;
+                        game.changeTile(Enums_1.TerrainType.Dirt, x, y, localPlayer.z, false);
+                        game.changeTile(Enums_1.TerrainType.Dirt, x + 1, y, localPlayer.z, false);
+                        creatureManager.spawn(creatureType, x, y, localPlayer.z, true);
+                        creatureManager.spawn(creatureType, x + 1, y, localPlayer.z, true, true);
                     }
-                    game.passTurn();
+                    game.passTurn(localPlayer);
                 }));
                 this.getDialog("Developer Tools").find(".inner").append(this.container);
             }, 100);
@@ -259,7 +258,6 @@ define(["require", "exports"], function (require, exports) {
             this.removeOptionsSection(this.getName());
         }
     }
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.default = Mod;
+    exports.default = BalancingTools;
 });
-//# sourceMappingURL=balancingtools.js.map
+//# sourceMappingURL=BalancingTools.js.map

@@ -1,22 +1,27 @@
-﻿/// <reference path="mod-reference/modreference.d.ts"/>
+import Creatures from "creature/Creatures";
+import { ICreature } from "creature/ICreature";
+import { CreatureType, EquipType, ItemType, PlayerState, SkillType, Source, TerrainType } from "Enums";
+import Mod from "mod/Mod";
+import { ITile } from "tile/ITerrain";
+import * as Utilities from "Utilities";
 
 interface IItemSpawnInfo {
 	itemType: ItemType;
 	equipType?: EquipType;
 }
 
-export default class Mod extends Mods.Mod {
+export default class BalancingTools extends Mod {
 	private container: JQuery;
 
 	public onInitialize(saveDataGlobal: any): any {
 	}
 
 	public onLoad(saveData: any): void {
-		const developerTools = Mods.getLoadedModByName("Developer Tools");
+		const developerTools = modManager.getLoadedModByName("Developer Tools");
 		if (developerTools) {
 			Utilities.Console.log(Source.Mod, `Found developer tools mod from balancing tools`, developerTools);
 
-			const modObject = <any>developerTools.object;
+			const modObject = developerTools.instance as any;
 			if (modObject) {
 				const ret = modObject.testFunction();
 				Utilities.Console.log(Source.Mod, `Balancing tools got ${ret} from developer tools`);
@@ -37,7 +42,7 @@ export default class Mod extends Mods.Mod {
 	// Hooks
 
 	// Turn off creature movement
-	public canCreatureMove(creatureId: number, creature: Creature.ICreature, tile?: Terrain.ITile): boolean {
+	public canCreatureMove(creatureId: number, creature: ICreature, tile?: ITile): boolean {
 		return false;
 	}
 
@@ -50,19 +55,19 @@ export default class Mod extends Mods.Mod {
 
 			this.container.append($("<button>Set Difficulty</button>").click(() => {
 
-				let difficulty = parseInt($("body").find("#difficulty").val(), 10);
+				const difficulty = parseInt($("body").find("#difficulty").val(), 10);
 
 				// delete all items
-				let items = Item.getItemsInContainer(player.inventory);
+				const items = itemManager.getItemsInContainer(localPlayer.inventory);
 				for (let i = items.length - 1; i >= 0; i--) {
-					Item.remove(items[i]);
+					itemManager.remove(items[i]);
 				}
 
 				// refresh stats (via Developer Tools)
 				ui.getBody().find("button:contains('Refresh Stats')").first().trigger("click");
 
 				// Equip and set skill based on input
-				let skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Archery, SkillType.Throwing];
+				const skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Archery, SkillType.Throwing];
 				let skillAmount = 0;
 
 				let list: IItemSpawnInfo[];
@@ -264,39 +269,37 @@ export default class Mod extends Mods.Mod {
 
 				if (list) {
 					for (let i = 0; i < list.length; i++) {
-						let spawnInfo = list[i];
-						let item = Item.create(spawnInfo.itemType);
+						const spawnInfo = list[i];
+						const item = localPlayer.createItemInInventory(spawnInfo.itemType);
 						if (spawnInfo.equipType) {
-							ui.setEquipSlot(spawnInfo.equipType, item.id);
+							localPlayer.equip(item, spawnInfo.equipType, true);
 						}
 					}
 				}
 
 				for (let i = 0; i < skillList.length; i++) {
-					player.skills[skillList[i]].percent = skillAmount;
-					player.skills[skillList[i]].core = skillAmount;
+					localPlayer.skills[skillList[i]].percent = skillAmount;
+					localPlayer.skills[skillList[i]].core = skillAmount;
 				}
 
-				game.passTurn();
+				game.passTurn(localPlayer);
 			}));
 
 			this.container.append($("<button>Spawn Creature Line</button>").click(() => {
 
 				// Spawn stationary creatures in a line
-				for (let i = 0; i < Creature.defines.length; i++) {
-					if (Creature.defines[i]) {
-						let x = player.x + 2;
-						let y = player.y + i;
+				for (const creatureType of Utilities.Enums.getValues(CreatureType)) {
+					const x = localPlayer.x + 2;
+					const y = localPlayer.y + creatureType;
 
-						game.changeTile(TerrainType.Dirt, x, y, player.z, false);
-						game.changeTile(TerrainType.Dirt, x + 1, y, player.z, false);
+					game.changeTile(TerrainType.Dirt, x, y, localPlayer.z, false);
+					game.changeTile(TerrainType.Dirt, x + 1, y, localPlayer.z, false);
 
-						Creature.spawn(i, x, y, player.z, true);
-						Creature.spawn(i, x + 1, y, player.z, true, true);
-					}
+					creatureManager.spawn(creatureType, x, y, localPlayer.z, true);
+					creatureManager.spawn(creatureType, x + 1, y, localPlayer.z, true, true);
 				}
 
-				game.passTurn();
+				game.passTurn(localPlayer);
 			}));
 
 			this.getDialog("Developer Tools").find(".inner").append(this.container);
