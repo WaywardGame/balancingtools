@@ -1,5 +1,4 @@
 import { ICreature } from "creature/ICreature";
-import { PlayerState } from "Enums";
 import Mod from "mod/Mod";
 import { ITile } from "tile/ITerrain";
 export default class BalancingTools extends Mod {
@@ -10,5 +9,4 @@ export default class BalancingTools extends Mod {
     onUnload(): void;
     canCreatureMove(creatureId: number, creature: ICreature, tile?: ITile): boolean;
     onShowInGameScreen(): void;
-    onGameEnd(playerState: PlayerState): void;
 }

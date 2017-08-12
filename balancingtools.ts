@@ -305,8 +305,4 @@ export default class BalancingTools extends Mod {
 			this.getDialog("Developer Tools").find(".inner").append(this.container);
 		}, 100);
 	}
-
-	public onGameEnd(playerState: PlayerState): void {
-		this.removeOptionsSection(this.getName());
-	}
 }

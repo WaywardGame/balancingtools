@@ -8,11 +8,10 @@
 	],
 	"hooks": [
 		"OnShowInGameScreen",
-		"OnGameEnd",
 		"CanCreatureMove"
 	],
 	"compatibleMinorVersions": [
-		3
+		4
 	],
 	"unloadable": true,
 	"file": "BalancingTools.js",

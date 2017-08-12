@@ -254,9 +254,6 @@ define(["require", "exports", "Enums", "mod/Mod", "Utilities"], function (requir
                 this.getDialog("Developer Tools").find(".inner").append(this.container);
             }, 100);
         }
-        onGameEnd(playerState) {
-            this.removeOptionsSection(this.getName());
-        }
     }
     exports.default = BalancingTools;
 });
