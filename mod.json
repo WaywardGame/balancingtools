@@ -3,7 +3,7 @@
 	"description": "Adds a set of balancing tools to the developer tools mod menu.",
 	"version": "1.2.1",
 	"author": "Spacetech",
-	"requiredMods": [
+	"dependencies": [
 		"474819610"
 	],
 	"hooks": [
@@ -11,7 +11,7 @@
 		"CanCreatureMove"
 	],
 	"compatibleMinorVersions": [
-		4
+		5
 	],
 	"unloadable": true,
 	"file": "BalancingTools.js",

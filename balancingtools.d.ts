@@ -1,12 +1,12 @@
 import { ICreature } from "creature/ICreature";
+import { MoveType } from "Enums";
 import Mod from "mod/Mod";
 import { ITile } from "tile/ITerrain";
 export default class BalancingTools extends Mod {
     private container;
-    onInitialize(saveDataGlobal: any): any;
+    private developerTools;
     onLoad(saveData: any): void;
-    onSave(): any;
     onUnload(): void;
-    canCreatureMove(creatureId: number, creature: ICreature, tile?: ITile): boolean;
+    canCreatureMove(creature: ICreature, tile: ITile, moveType: MoveType): boolean;
     onShowInGameScreen(): void;
 }
