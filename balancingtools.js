@@ -5,7 +5,7 @@ define(["require", "exports", "Enums", "mod/Mod", "Utilities"], function (requir
         onLoad(saveData) {
             this.developerTools = modManager.getLoadedModByName("Developer Tools");
             if (this.developerTools) {
-                Utilities.Console.log(Enums_1.Source.Mod, `Found developer tools mod from balancing tools.`, this.developerTools);
+                Utilities.Console.log(Enums_1.Source.Mod, "Found developer tools mod from balancing tools.", this.developerTools);
             }
         }
         onUnload() {

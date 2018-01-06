@@ -1,10 +1,10 @@
 import Creatures from "creature/Creatures";
 import { ICreature } from "creature/ICreature";
 import { CreatureType, EquipType, ItemType, MoveType, PlayerState, SkillType, Source, TerrainType } from "Enums";
+import { IModInfo } from "mod/IModManager";
 import Mod from "mod/Mod";
 import { ITile } from "tile/ITerrain";
 import * as Utilities from "Utilities";
-import { IModInfo } from "mod/IModManager";
 
 interface IItemSpawnInfo {
 	itemType: ItemType;
@@ -18,7 +18,7 @@ export default class BalancingTools extends Mod {
 	public onLoad(saveData: any): void {
 		this.developerTools = modManager.getLoadedModByName("Developer Tools");
 		if (this.developerTools) {
-			Utilities.Console.log(Source.Mod, `Found developer tools mod from balancing tools.`, this.developerTools);
+			Utilities.Console.log(Source.Mod, "Found developer tools mod from balancing tools.", this.developerTools);
 		}
 	}
 
