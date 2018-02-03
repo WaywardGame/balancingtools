@@ -1,5 +1,5 @@
 # Balancing Tools
-Adds a set of balancing tools to the developer tools mod menu. The Developers Tools mod is required to run this.
+Adds a set of balancing tools to the debug tools mod menu. The Debug Tools mod is required to run this.
 
 The set of tools allows you to change into different sets of skills and equipment and spawns columns of creatures in order to test combat balance.
 
@@ -19,6 +19,6 @@ Open the folder in Visual Studio Code and build with Ctrl+Shift+B.
 ## Screenshots
 ![Balancing Tools](https://raw.githubusercontent.com/WaywardGame/balancingtools/master/mod.png "Balancing Tools")
 
-![Screenshot #1](http://images.akamai.steamusercontent.com/ugc/312243491181378545/0F336DD4258087B7E6C460B884221B2542952974/ "Screenshot #1")
+![Screenshot #1](https://steamuserimages-a.akamaihd.net/ugc/924796934159762242/F8047EE8A56280E23B13D68338C1443D6C2A0ABA/ "Screenshot #1")
 
-![Screenshot #2](http://images.akamai.steamusercontent.com/ugc/312243491181378555/1DE84223DF62A4F37EAAE1C25433E224CF6FE2DD/ "Screenshot #2")
+![Screenshot #2](https://steamuserimages-a.akamaihd.net/ugc/924796934159762436/256E78643ADFF1D395FE2118D5CF2BD55F9CA9BD/ "Screenshot #2")

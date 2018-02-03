@@ -1,6 +1,6 @@
 {
 	"name": "Balancing Tools",
-	"description": "Adds a set of balancing tools to the developer tools mod menu.",
+	"description": "Adds a set of balancing tools to the debug tools mod menu.",
 	"version": "1.2.1",
 	"author": "Spacetech",
 	"dependencies": [

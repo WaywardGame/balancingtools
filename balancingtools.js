@@ -3,9 +3,9 @@ define(["require", "exports", "Enums", "mod/Mod", "Utilities"], function (requir
     Object.defineProperty(exports, "__esModule", { value: true });
     class BalancingTools extends Mod_1.default {
         onLoad(saveData) {
-            this.developerTools = modManager.getLoadedModByName("Developer Tools");
-            if (this.developerTools) {
-                Utilities.Console.log(Enums_1.Source.Mod, "Found developer tools mod from balancing tools.", this.developerTools);
+            this.debugTools = modManager.getLoadedModByName("Debug Tools");
+            if (this.debugTools) {
+                Utilities.Console.log(Enums_1.Source.Mod, "Found debug tools mod from balancing tools.", this.debugTools);
             }
         }
         onUnload() {
@@ -17,7 +17,7 @@ define(["require", "exports", "Enums", "mod/Mod", "Utilities"], function (requir
             return false;
         }
         onShowInGameScreen() {
-            if (this.developerTools) {
+            if (this.debugTools) {
                 setTimeout(() => {
                     this.container = $("<div></div>");
                     this.container.append($('<input id="difficulty" type="number" value="0" min="0" max="4" />'));
@@ -243,7 +243,7 @@ define(["require", "exports", "Enums", "mod/Mod", "Utilities"], function (requir
                         }
                         game.passTurn(localPlayer);
                     }));
-                    this.getDialog("Developer Tools").find(".inner").append(this.container);
+                    this.getDialog("Debug Tools").find(".inner").append(this.container);
                 }, 100);
             }
         }

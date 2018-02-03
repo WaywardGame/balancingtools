@@ -13,12 +13,12 @@ interface IItemSpawnInfo {
 
 export default class BalancingTools extends Mod {
 	private container: JQuery;
-	private developerTools: IModInfo;
+	private debugTools: IModInfo;
 
 	public onLoad(saveData: any): void {
-		this.developerTools = modManager.getLoadedModByName("Developer Tools");
-		if (this.developerTools) {
-			Utilities.Console.log(Source.Mod, "Found developer tools mod from balancing tools.", this.developerTools);
+		this.debugTools = modManager.getLoadedModByName("Debug Tools");
+		if (this.debugTools) {
+			Utilities.Console.log(Source.Mod, "Found debug tools mod from balancing tools.", this.debugTools);
 		}
 	}
 
@@ -38,9 +38,9 @@ export default class BalancingTools extends Mod {
 
 	public onShowInGameScreen(): void {
 
-		if (this.developerTools) {
+		if (this.debugTools) {
 
-			// Wait a bit for developer tools to create its dialog
+			// Wait a bit for debug tools to create its dialog
 			setTimeout(() => {
 				this.container = $("<div></div>");
 	
@@ -56,7 +56,7 @@ export default class BalancingTools extends Mod {
 						itemManager.remove(items[i]);
 					}
 	
-					// refresh stats (via Developer Tools)
+					// refresh stats (via Debug Tools)
 					ui.getBody().find("button:contains('Refresh Stats')").first().trigger("click");
 	
 					// Equip and set skill based on input
@@ -295,7 +295,7 @@ export default class BalancingTools extends Mod {
 					game.passTurn(localPlayer);
 				}));
 	
-				this.getDialog("Developer Tools").find(".inner").append(this.container);
+				this.getDialog("Debug Tools").find(".inner").append(this.container);
 			}, 100);
 		}
 	}
