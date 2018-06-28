@@ -8,5 +8,5 @@ export default class BalancingTools extends Mod {
     onLoad(saveData: any): void;
     onUnload(): void;
     canCreatureMove(creature: ICreature, tile: ITile, moveType: MoveType): boolean;
-    onShowInGameScreen(): void;
+    onGameScreenVisible(): void;
 }

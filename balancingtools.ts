@@ -1,10 +1,11 @@
-import Creatures from "creature/Creatures";
 import { ICreature } from "creature/ICreature";
-import { CreatureType, EquipType, ItemType, MoveType, PlayerState, SkillType, Source, TerrainType } from "Enums";
-import { IModInfo } from "mod/IModManager";
+import { CreatureType, EquipType, ItemType, MoveType, SkillType, TerrainType } from "Enums";
+import { HookMethod } from "mod/IHookHost";
+import { IModInfo } from "mod/IModInfo";
 import Mod from "mod/Mod";
 import { ITile } from "tile/ITerrain";
-import * as Utilities from "Utilities";
+import Enums from "utilities/enum/Enums";
+import Log, { LogSource } from "utilities/Log";
 
 interface IItemSpawnInfo {
 	itemType: ItemType;
@@ -18,7 +19,7 @@ export default class BalancingTools extends Mod {
 	public onLoad(saveData: any): void {
 		this.debugTools = modManager.getLoadedModByName("Debug Tools");
 		if (this.debugTools) {
-			Utilities.Console.log(Source.Mod, "Found debug tools mod from balancing tools.", this.debugTools);
+			Log.info(LogSource.Mod, "Found debug tools mod from balancing tools.");
 		}
 	}
 
@@ -32,11 +33,13 @@ export default class BalancingTools extends Mod {
 	// Hooks
 
 	// Turn off creature movement
+	@HookMethod
 	public canCreatureMove(creature: ICreature, tile: ITile, moveType: MoveType): boolean {
 		return false;
 	}
 
-	public onShowInGameScreen(): void {
+	@HookMethod
+	public onGameScreenVisible(): void {
 
 		if (this.debugTools) {
 
@@ -44,7 +47,7 @@ export default class BalancingTools extends Mod {
 			setTimeout(() => {
 				this.container = $("<div></div>");
 	
-				this.container.append($('<input id="difficulty" type="number" value="0" min="0" max="4" />'));
+				this.container.append($('<input id="difficulty" type="number" value="0" min="0" max="5" />'));
 	
 				this.container.append($("<button>Set Difficulty</button>").click(() => {
 	
@@ -60,7 +63,7 @@ export default class BalancingTools extends Mod {
 					ui.getBody().find("button:contains('Refresh Stats')").first().trigger("click");
 	
 					// Equip and set skill based on input
-					const skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Archery, SkillType.Throwing];
+					const skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Marksmanship, SkillType.Throwing];
 					let skillAmount = 0;
 	
 					let list: IItemSpawnInfo[];
@@ -159,6 +162,56 @@ export default class BalancingTools extends Mod {
 						case 3:
 							list = [
 								{
+									itemType: ItemType.CopperShield,
+									equipType: EquipType.LeftHand
+								}, {
+									itemType: ItemType.CopperSword,
+									equipType: EquipType.RightHand
+								}, {
+									itemType: ItemType.CopperBreastPlate,
+									equipType: EquipType.Chest
+								}, {
+									itemType: ItemType.CopperGreaves,
+									equipType: EquipType.Legs
+								}, {
+									itemType: ItemType.CopperHelmet,
+									equipType: EquipType.Head
+								}, {
+									itemType: ItemType.CopperBoots,
+									equipType: EquipType.Feet
+								}, {
+									itemType: ItemType.CopperGorget,
+									equipType: EquipType.Neck
+								}, {
+									itemType: ItemType.CopperGauntlets,
+									equipType: EquipType.Hands
+								}, {
+									itemType: ItemType.LeatherBelt,
+									equipType: EquipType.Belt
+								}, {
+									itemType: ItemType.LongBow
+								}, {
+									itemType: ItemType.CopperArrow
+								}, {
+									itemType: ItemType.CopperArrow
+								}, {
+									itemType: ItemType.CopperArrow
+								}, {
+									itemType: ItemType.LeatherSling
+								}, {
+									itemType: ItemType.CopperBullet
+								}, {
+									itemType: ItemType.CopperBullet
+								}, {
+									itemType: ItemType.CopperBullet
+								}
+							];
+	
+							skillAmount = 50;
+							break;
+						case 4:
+							list = [
+								{
 									itemType: ItemType.WroughtIronShield,
 									equipType: EquipType.LeftHand
 								}, {
@@ -207,7 +260,7 @@ export default class BalancingTools extends Mod {
 							skillAmount = 60;
 	
 							break;
-						case 4:
+						case 5:
 							list = [
 								{
 									itemType: ItemType.IronShield,
@@ -273,6 +326,7 @@ export default class BalancingTools extends Mod {
 					for (let i = 0; i < skillList.length; i++) {
 						localPlayer.skills[skillList[i]].percent = skillAmount;
 						localPlayer.skills[skillList[i]].core = skillAmount;
+						localPlayer.skillGain(skillList[i], 0, true);
 					}
 	
 					game.passTurn(localPlayer);
@@ -281,7 +335,7 @@ export default class BalancingTools extends Mod {
 				this.container.append($("<button>Spawn Creature Line</button>").click(() => {
 	
 					// Spawn stationary creatures in a line
-					for (const creatureType of Utilities.Enums.getValues(CreatureType)) {
+					for (const creatureType of Enums.values(CreatureType)) {
 						const x = localPlayer.x + 2;
 						const y = localPlayer.y + creatureType;
 	
