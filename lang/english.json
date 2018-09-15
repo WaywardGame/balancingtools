@@ -1,0 +1,18 @@
+{
+	"extends": "English",
+	"dictionaries": {
+		"modBalancingToolsBalancingTools": {
+			"panelName": "Balancing",
+			"freezeCreatures": "Freeze Creatures",
+			"setDifficulty": "Set Difficulty",
+			"spawnCreatureLine": "Spawn Creature Line"
+		},
+		"modBalancingToolsDifficulty": {
+			"bark": "Bark",
+			"leather": "Leather",
+			"copper": "Copper",
+			"wroughtIron": "Wrought Iron",
+			"iron": "Iron"
+		}
+	}
+}

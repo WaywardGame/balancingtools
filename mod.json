@@ -1,7 +1,7 @@
 {
 	"name": "Balancing Tools",
 	"description": "Adds a set of balancing tools to the debug tools mod menu.",
-	"version": "1.2.2",
+	"version": "2.0",
 	"author": "Spacetech",
 	"dependencies": [
 		"474819610"
@@ -9,7 +9,11 @@
 	"compatibleMinorVersions": [
 		6
 	],
+	"multiplayerCompatible": true,
 	"unloadable": true,
-	"file": "BalancingTools.js",
+	"file": "out/BalancingTools.js",
+	"languages": [
+		"lang/english"
+	],
 	"publishedFileId": "474819583"
 }
