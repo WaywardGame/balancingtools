@@ -5,11 +5,11 @@ import { EntityType } from "entity/IEntity";
 import Actions, { defaultUsability } from "../action/IAction";
 
 /**
- * Sets whether creatures are frozen
+ * Sets whether NPCs are frozen
  */
 export default new Action(ActionArgument.Boolean)
 	.setUsableBy(EntityType.Player)
 	.setUsableWhen(...defaultUsability)
 	.setHandler((action, frozen) => {
-		Actions.BALANCING_TOOLS.saveData.freezeCreatures = frozen;
+		Actions.BALANCING_TOOLS.saveData.freezeNPCs = frozen;
 	});

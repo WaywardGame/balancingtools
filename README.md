@@ -3,11 +3,13 @@ Adds a set of balancing tools to the debug tools mod menu. The Debug Tools mod i
 
 The set of tools allows you to change into different sets of skills and equipment and spawns columns of creatures in order to test combat balance.
 
-## Cloning:
+## Cloning/Setup:
 ```
 git clone https://github.com/WaywardGame/balancingtools.git
 cd balancingtools
-git submodule update --init
+On Windows: path/to/wayward/install/wayward.cmd +mod update .
+On macOS: path/to/wayward/install/Wayward.app/Contents/MacOS/Electron +mod update .
+On Linux: path/to/wayward/install/wayward +mod update .
 ```
 
 ## Building:

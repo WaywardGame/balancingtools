@@ -4,6 +4,7 @@
 		"modBalancingToolsBalancingTools": {
 			"panelName": "Balancing",
 			"freezeCreatures": "Freeze Creatures",
+			"freezeNPCs": "Freeze NPCs",
 			"setDifficulty": "Set Difficulty",
 			"spawnCreatureLine": "Spawn Creature Line"
 		},

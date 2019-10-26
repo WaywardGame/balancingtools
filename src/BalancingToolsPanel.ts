@@ -1,17 +1,19 @@
-import ActionExecutor from "action/ActionExecutor";
+import ActionExecutor from "entity/action/ActionExecutor";
 import Translation from "language/Translation";
 import { bindingManager } from "newui/BindingManager";
-import Button, { ButtonEvent } from "newui/component/Button";
-import { CheckButton, CheckButtonEvent } from "newui/component/CheckButton";
+import Button from "newui/component/Button";
+import { CheckButton } from "newui/component/CheckButton";
 import ContextMenu from "newui/component/ContextMenu";
-import IGameScreenApi from "newui/screen/screens/game/IGameScreenApi";
-import { tuple } from "utilities/iterable/Generators";
-import { Bound } from "utilities/Objects";
+import newui from "newui/NewUi";
+import { Tuple } from "utilities/Arrays";
+
 import DebugToolsPanel from "../../debugtools/out/ui/component/DebugToolsPanel";
 import { DebugToolsDialogPanelClass } from "../../debugtools/out/ui/DebugToolsDialog";
+
 import SetDifficulty from "./action/SetDifficulty";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
 import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
+import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import BalancingTools from "./BalancingTools";
 import { BalancingToolsTranslation, difficulties, Difficulty } from "./IBalancingTools";
 
@@ -24,27 +26,33 @@ function translation(entry: BalancingToolsTranslation) {
 const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPanel) {
 	class BalancingToolsPanelClass extends DebugToolsPanelClass {
 
-		public constructor(gsapi: IGameScreenApi) {
-			super(gsapi);
+		public constructor() {
+			super();
 
-			new CheckButton(this.api)
+			new CheckButton()
 				.setText(translation(BalancingToolsTranslation.FreezeCreatures))
 				.setRefreshMethod(() => !!BalancingTools.INSTANCE.saveData.freezeCreatures)
-				.on(CheckButtonEvent.Change, (_, checked: boolean) => this.toggleFreezeCreatures(checked))
+				.event.subscribe("toggle", (_, checked) => this.toggleFreezeCreatures(checked))
 				.appendTo(this);
 
-			new Button(this.api)
+			new CheckButton()
+				.setText(translation(BalancingToolsTranslation.FreezeNPCs))
+				.setRefreshMethod(() => !!BalancingTools.INSTANCE.saveData.freezeNPCs)
+				.event.subscribe("toggle", (_, checked) => this.toggleFreezeNPCs(checked))
+				.appendTo(this);
+
+			new Button()
 				.setText(translation(BalancingToolsTranslation.SetDifficulty))
-				.on(ButtonEvent.Activate, this.showDifficultyContextMenu)
+				.event.subscribe("activate", this.showDifficultyContextMenu)
 				.appendTo(this);
 
-			new Button(this.api)
+			new Button()
 				.setText(translation(BalancingToolsTranslation.SpawnCreatureLine))
-				.on(ButtonEvent.Activate, this.spawnCreatureLine)
+				.event.subscribe("activate", this.spawnCreatureLine)
 				.appendTo(this);
 		}
 
-		public getTranslation() {
+		@Override public getTranslation() {
 			return translation(BalancingToolsTranslation.PanelName);
 		}
 
@@ -52,17 +60,21 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 			ActionExecutor.get(ToggleCreaturesFrozen).execute(localPlayer, freezed);
 		}
 
+		private toggleFreezeNPCs(freezed: boolean) {
+			ActionExecutor.get(ToggleNPCsFrozen).execute(localPlayer, freezed);
+		}
+
 		@Bound
 		private showDifficultyContextMenu() {
-			const screen = this.api.getVisibleScreen();
+			const screen = newui.screens.getTop();
 			if (!screen) {
 				return;
 			}
 
 			const mouse = bindingManager.getMouse();
 
-			new ContextMenu(this.api, ...difficulties.keys()
-				.map(difficulty => tuple(Difficulty[difficulty], {
+			new ContextMenu(...difficulties.keys()
+				.map(difficulty => Tuple(Difficulty[difficulty], {
 					translation: new Translation(BalancingTools.INSTANCE.dictionaryDifficulty, difficulty),
 					onActivate: () => this.setDifficulty(difficulty)
 				})))

@@ -1,4 +1,5 @@
-import { EquipType, ItemType } from "Enums";
+import { EquipType } from "entity/IHuman";
+import { ItemType } from "item/IItem";
 
 export const BALANCING_TOOLS_ID = "Balancing Tools";
 
@@ -6,11 +7,13 @@ export enum BalancingToolsTranslation {
 	PanelName,
 	FreezeCreatures,
 	SetDifficulty,
-	SpawnCreatureLine
+	SpawnCreatureLine,
+	FreezeNPCs,
 }
 
 export interface ISaveData {
 	freezeCreatures?: boolean;
+	freezeNPCs?: boolean;
 }
 
 export enum Difficulty {
@@ -18,7 +21,7 @@ export enum Difficulty {
 	Leather,
 	Copper,
 	WroughtIron,
-	Iron
+	Iron,
 }
 
 export interface IItemSpawnInfo {
@@ -37,232 +40,232 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 		items: [
 			{
 				itemType: ItemType.BarkShield,
-				equipType: EquipType.LeftHand
+				equipType: EquipType.LeftHand,
 			}, {
 				itemType: ItemType.WoodenSpear,
-				equipType: EquipType.RightHand
+				equipType: EquipType.RightHand,
 			}, {
 				itemType: ItemType.BarkTunic,
-				equipType: EquipType.Chest
+				equipType: EquipType.Chest,
 			}, {
 				itemType: ItemType.BarkLeggings,
-				equipType: EquipType.Legs
+				equipType: EquipType.Legs,
 			}, {
 				itemType: ItemType.Skullcap,
-				equipType: EquipType.Head
+				equipType: EquipType.Head,
 			}, {
-				itemType: ItemType.Bow
+				itemType: ItemType.Bow,
 			}, {
-				itemType: ItemType.WoodenArrow
+				itemType: ItemType.WoodenArrow,
 			}, {
-				itemType: ItemType.WoodenArrow
+				itemType: ItemType.WoodenArrow,
 			}, {
-				itemType: ItemType.WoodenArrow
+				itemType: ItemType.WoodenArrow,
 			}, {
-				itemType: ItemType.CordedSling
+				itemType: ItemType.CordedSling,
 			}, {
-				itemType: ItemType.StoneBullet
+				itemType: ItemType.StoneBullet,
 			}, {
-				itemType: ItemType.StoneBullet
+				itemType: ItemType.StoneBullet,
 			}, {
-				itemType: ItemType.StoneBullet
-			}
-		]
+				itemType: ItemType.StoneBullet,
+			},
+		],
 	}],
 	[Difficulty.Leather, {
 		skill: 35,
 		items: [
 			{
 				itemType: ItemType.BarkShield,
-				equipType: EquipType.LeftHand
+				equipType: EquipType.LeftHand,
 			}, {
 				itemType: ItemType.StoneAxe,
-				equipType: EquipType.RightHand
+				equipType: EquipType.RightHand,
 			}, {
 				itemType: ItemType.LeatherTunic,
-				equipType: EquipType.Chest
+				equipType: EquipType.Chest,
 			}, {
 				itemType: ItemType.LeatherPants,
-				equipType: EquipType.Legs
+				equipType: EquipType.Legs,
 			}, {
 				itemType: ItemType.LeatherCap,
-				equipType: EquipType.Head
+				equipType: EquipType.Head,
 			}, {
 				itemType: ItemType.LeatherBoots,
-				equipType: EquipType.Feet
+				equipType: EquipType.Feet,
 			}, {
 				itemType: ItemType.LeatherGorget,
-				equipType: EquipType.Neck
+				equipType: EquipType.Neck,
 			}, {
 				itemType: ItemType.LeatherGloves,
-				equipType: EquipType.Hands
+				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt
+				equipType: EquipType.Belt,
 			}, {
-				itemType: ItemType.ShortBow
+				itemType: ItemType.ShortBow,
 			}, {
-				itemType: ItemType.StoneArrow
+				itemType: ItemType.StoneArrow,
 			}, {
-				itemType: ItemType.StoneArrow
+				itemType: ItemType.StoneArrow,
 			}, {
-				itemType: ItemType.StoneArrow
+				itemType: ItemType.StoneArrow,
 			}, {
-				itemType: ItemType.LeatherSling
+				itemType: ItemType.LeatherSling,
 			}, {
-				itemType: ItemType.StoneBullet
+				itemType: ItemType.StoneBullet,
 			}, {
-				itemType: ItemType.StoneBullet
+				itemType: ItemType.StoneBullet,
 			}, {
-				itemType: ItemType.StoneBullet
-			}
-		]
+				itemType: ItemType.StoneBullet,
+			},
+		],
 	}],
 	[Difficulty.Copper, {
 		skill: 50,
 		items: [
 			{
 				itemType: ItemType.CopperShield,
-				equipType: EquipType.LeftHand
+				equipType: EquipType.LeftHand,
 			}, {
 				itemType: ItemType.CopperSword,
-				equipType: EquipType.RightHand
+				equipType: EquipType.RightHand,
 			}, {
 				itemType: ItemType.CopperBreastPlate,
-				equipType: EquipType.Chest
+				equipType: EquipType.Chest,
 			}, {
 				itemType: ItemType.CopperGreaves,
-				equipType: EquipType.Legs
+				equipType: EquipType.Legs,
 			}, {
 				itemType: ItemType.CopperHelmet,
-				equipType: EquipType.Head
+				equipType: EquipType.Head,
 			}, {
 				itemType: ItemType.CopperBoots,
-				equipType: EquipType.Feet
+				equipType: EquipType.Feet,
 			}, {
 				itemType: ItemType.CopperGorget,
-				equipType: EquipType.Neck
+				equipType: EquipType.Neck,
 			}, {
 				itemType: ItemType.CopperGauntlets,
-				equipType: EquipType.Hands
+				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt
+				equipType: EquipType.Belt,
 			}, {
-				itemType: ItemType.LongBow
+				itemType: ItemType.LongBow,
 			}, {
-				itemType: ItemType.CopperArrow
+				itemType: ItemType.CopperArrow,
 			}, {
-				itemType: ItemType.CopperArrow
+				itemType: ItemType.CopperArrow,
 			}, {
-				itemType: ItemType.CopperArrow
+				itemType: ItemType.CopperArrow,
 			}, {
-				itemType: ItemType.LeatherSling
+				itemType: ItemType.LeatherSling,
 			}, {
-				itemType: ItemType.CopperBullet
+				itemType: ItemType.CopperBullet,
 			}, {
-				itemType: ItemType.CopperBullet
+				itemType: ItemType.CopperBullet,
 			}, {
-				itemType: ItemType.CopperBullet
-			}
-		]
+				itemType: ItemType.CopperBullet,
+			},
+		],
 	}],
 	[Difficulty.WroughtIron, {
 		skill: 60,
 		items: [
 			{
 				itemType: ItemType.WroughtIronShield,
-				equipType: EquipType.LeftHand
+				equipType: EquipType.LeftHand,
 			}, {
 				itemType: ItemType.WroughtIronSword,
-				equipType: EquipType.RightHand
+				equipType: EquipType.RightHand,
 			}, {
 				itemType: ItemType.WroughtIronBreastPlate,
-				equipType: EquipType.Chest
+				equipType: EquipType.Chest,
 			}, {
 				itemType: ItemType.WroughtIronGreaves,
-				equipType: EquipType.Legs
+				equipType: EquipType.Legs,
 			}, {
 				itemType: ItemType.WroughtIronHelmet,
-				equipType: EquipType.Head
+				equipType: EquipType.Head,
 			}, {
 				itemType: ItemType.WroughtIronBoots,
-				equipType: EquipType.Feet
+				equipType: EquipType.Feet,
 			}, {
 				itemType: ItemType.WroughtIronGorget,
-				equipType: EquipType.Neck
+				equipType: EquipType.Neck,
 			}, {
 				itemType: ItemType.WroughtIronGauntlets,
-				equipType: EquipType.Hands
+				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt
+				equipType: EquipType.Belt,
 			}, {
-				itemType: ItemType.LongBow
+				itemType: ItemType.LongBow,
 			}, {
-				itemType: ItemType.WroughtIronArrow
+				itemType: ItemType.WroughtIronArrow,
 			}, {
-				itemType: ItemType.WroughtIronArrow
+				itemType: ItemType.WroughtIronArrow,
 			}, {
-				itemType: ItemType.WroughtIronArrow
+				itemType: ItemType.WroughtIronArrow,
 			}, {
-				itemType: ItemType.LeatherSling
+				itemType: ItemType.LeatherSling,
 			}, {
-				itemType: ItemType.WroughtIronBullet
+				itemType: ItemType.WroughtIronBullet,
 			}, {
-				itemType: ItemType.WroughtIronBullet
+				itemType: ItemType.WroughtIronBullet,
 			}, {
-				itemType: ItemType.WroughtIronBullet
-			}
-		]
+				itemType: ItemType.WroughtIronBullet,
+			},
+		],
 	}],
 	[Difficulty.Iron, {
 		skill: 85,
 		items: [
 			{
 				itemType: ItemType.IronShield,
-				equipType: EquipType.LeftHand
+				equipType: EquipType.LeftHand,
 			}, {
 				itemType: ItemType.IronSword,
-				equipType: EquipType.RightHand
+				equipType: EquipType.RightHand,
 			}, {
 				itemType: ItemType.IronBreastplate,
-				equipType: EquipType.Chest
+				equipType: EquipType.Chest,
 			}, {
 				itemType: ItemType.IronGreaves,
-				equipType: EquipType.Legs
+				equipType: EquipType.Legs,
 			}, {
 				itemType: ItemType.IronHelmet,
-				equipType: EquipType.Head
+				equipType: EquipType.Head,
 			}, {
 				itemType: ItemType.IronBoots,
-				equipType: EquipType.Feet
+				equipType: EquipType.Feet,
 			}, {
 				itemType: ItemType.IronGorget,
-				equipType: EquipType.Neck
+				equipType: EquipType.Neck,
 			}, {
 				itemType: ItemType.IronGauntlets,
-				equipType: EquipType.Hands
+				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt
+				equipType: EquipType.Belt,
 			}, {
-				itemType: ItemType.CompositeBow
+				itemType: ItemType.CompositeBow,
 			}, {
-				itemType: ItemType.IronArrow
+				itemType: ItemType.IronArrow,
 			}, {
-				itemType: ItemType.IronArrow
+				itemType: ItemType.IronArrow,
 			}, {
-				itemType: ItemType.IronArrow
+				itemType: ItemType.IronArrow,
 			}, {
-				itemType: ItemType.LeatherSling
+				itemType: ItemType.LeatherSling,
 			}, {
-				itemType: ItemType.IronBullet
+				itemType: ItemType.IronBullet,
 			}, {
-				itemType: ItemType.IronBullet
+				itemType: ItemType.IronBullet,
 			}, {
-				itemType: ItemType.IronBullet
-			}
-		]
-	}]
+				itemType: ItemType.IronBullet,
+			},
+		],
+	}],
 ]);

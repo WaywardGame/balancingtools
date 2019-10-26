@@ -1,8 +1,9 @@
-import { ActionType } from "action/IAction";
-import { ICreature } from "creature/ICreature";
-import { MoveType } from "Enums";
+import { ActionType } from "entity/action/IAction";
+import Creature from "entity/creature/Creature";
+import { MoveType } from "entity/IEntity";
+import NPC from "entity/npc/NPC";
+import { EventHandler } from "event/EventManager";
 import { Dictionary } from "language/Dictionaries";
-import { HookMethod } from "mod/IHookHost";
 import { InterModRegistration } from "mod/InterModRegistry";
 import Mod from "mod/Mod";
 import Register from "mod/ModRegistry";
@@ -13,6 +14,7 @@ import Actions from "./action/IAction";
 import SetDifficulty from "./action/SetDifficulty";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
 import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
+import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import BalancingToolsPanel from "./BalancingToolsPanel";
 import { BALANCING_TOOLS_ID, BalancingToolsTranslation, Difficulty, ISaveData } from "./IBalancingTools";
 
@@ -45,6 +47,9 @@ export default class BalancingTools extends Mod {
 	@Register.action("ToggleCreaturesFrozen", ToggleCreaturesFrozen)
 	public readonly actionToggleCreaturesFrozen: ActionType;
 
+	@Register.action("ToggleNPCsFrozen", ToggleNPCsFrozen)
+	public readonly actionToggleNPCsFrozen: ActionType;
+
 	@Register.action("SetDifficulty", SetDifficulty)
 	public readonly actionSetDifficulty: ActionType;
 
@@ -58,12 +63,25 @@ export default class BalancingTools extends Mod {
 	/**
 	 * Disables creature movement
 	 */
-	@HookMethod
-	public canCreatureMove(creature: ICreature, tile: ITile, x: number, y: number, z: number, moveType: MoveType): boolean | undefined {
+	@EventHandler(Creature, "canMove")
+	public canCreatureMove(creature: Creature, tile: ITile, x: number, y: number, z: number, moveType: MoveType): boolean | undefined {
 		if (this.saveData.freezeCreatures) {
 			return false;
 		}
 
 		return undefined;
 	}
+
+	/**
+	 * Disables NPC movement
+	 */
+	@EventHandler(NPC, "canMove")
+	public canNPCMove(npc: NPC, tile: ITile, x: number, y: number, z: number, moveType: MoveType): boolean | undefined {
+		if (this.saveData.freezeNPCs) {
+			return false;
+		}
+
+		return undefined;
+	}
+
 }

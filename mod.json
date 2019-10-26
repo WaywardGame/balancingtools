@@ -6,12 +6,11 @@
 	"dependencies": [
 		"474819610"
 	],
-	"compatibleMinorVersions": [
-		7
-	],
-	"multiplayerCompatible": true,
+	"waywardVersion": "2.8.0-beta",
+	"multiplayer": "compatible",
 	"unloadable": true,
 	"file": "out/BalancingTools.js",
+	"allowUnlockingMilestones": true,
 	"languages": [
 		"lang/english"
 	],

@@ -1,9 +1,11 @@
-import { Action } from "action/Action";
-import { ActionArgument } from "action/IAction";
+import { Action } from "entity/action/Action";
+import { ActionArgument } from "entity/action/IAction";
 import { EntityType } from "entity/IEntity";
-import { SkillType } from "Enums";
-import Heal from "../../../debugtools/out/action/Heal";
+import { SkillType } from "entity/IHuman";
+
+// import Heal from "../../../debugtools/out/action/Heal";
 import { difficulties, Difficulty } from "../IBalancingTools";
+
 import Actions, { defaultUsability } from "./IAction";
 
 export default new Action(ActionArgument.Number)
@@ -16,7 +18,8 @@ export default new Action(ActionArgument.Number)
 		itemManager.removeContainerItems(executor.inventory);
 
 		// refresh stats (via Debug Tools)
-		action.get(Actions.DEBUG_TOOLS.actionHeal as any as typeof Heal).execute(localPlayer, executor);
+		// action.get(Actions.DEBUG_TOOLS.actionHeal as any as typeof Heal).execute(localPlayer, executor);
+		(action as any).get(Actions.DEBUG_TOOLS.actionHeal).execute(localPlayer, executor);
 
 		// Equip and set skill based on input
 		const skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Marksmanship, SkillType.Throwing];
