@@ -17,8 +17,8 @@ export default new Action()
 			game.changeTile(TerrainType.Dirt, x, y, executor.z, false);
 			game.changeTile(TerrainType.Dirt, x + 1, y, executor.z, false);
 
-			creatureManager.spawn(creatureType, x, y, executor.z, true);
-			creatureManager.spawn(creatureType, x + 1, y, executor.z, true, true);
+			creatureManager.spawn(creatureType, x, y, executor.z, true, undefined, undefined, true);
+			creatureManager.spawn(creatureType, x + 1, y, executor.z, true, true, undefined, true);
 		}
 
 		renderer.computeSpritesInViewport();
