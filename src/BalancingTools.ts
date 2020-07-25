@@ -16,7 +16,7 @@ import SpawnCreatureLine from "./action/SpawnCreatureLine";
 import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import BalancingToolsPanel from "./BalancingToolsPanel";
-import { BALANCING_TOOLS_ID, BalancingToolsTranslation, Difficulty, ISaveData } from "./IBalancingTools";
+import { BalancingToolsTranslation, BALANCING_TOOLS_ID, Difficulty, ISaveData } from "./IBalancingTools";
 
 export default class BalancingTools extends Mod {
 

@@ -1,15 +1,13 @@
 import ActionExecutor from "entity/action/ActionExecutor";
 import Translation from "language/Translation";
-import { bindingManager } from "newui/BindingManager";
 import Button from "newui/component/Button";
 import { CheckButton } from "newui/component/CheckButton";
 import ContextMenu from "newui/component/ContextMenu";
+import InputManager from "newui/input/InputManager";
 import newui from "newui/NewUi";
 import { Tuple } from "utilities/Arrays";
-
 import DebugToolsPanel from "../../debugtools/out/ui/component/DebugToolsPanel";
 import { DebugToolsDialogPanelClass } from "../../debugtools/out/ui/DebugToolsDialog";
-
 import SetDifficulty from "./action/SetDifficulty";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
 import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
@@ -71,7 +69,7 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 				return;
 			}
 
-			const mouse = bindingManager.getMouse();
+			const mouse = InputManager.mouse.position;
 
 			new ContextMenu(...difficulties.keys()
 				.map(difficulty => Tuple(Difficulty[difficulty], {

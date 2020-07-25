@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 define(["require", "exports", "entity/action/IAction", "mod/Mod", "../IBalancingTools"], function (require, exports, IAction_1, Mod_1, IBalancingTools_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.defaultUsability = void 0;
     exports.defaultUsability = [IAction_1.ActionUsability.Ghost, IAction_1.ActionUsability.Paused, IAction_1.ActionUsability.Delayed, IAction_1.ActionUsability.Moving];
     class Actions {
     }
@@ -21,4 +22,4 @@ define(["require", "exports", "entity/action/IAction", "mod/Mod", "../IBalancing
     ], Actions, "DEBUG_TOOLS", void 0);
     exports.default = Actions;
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSUFjdGlvbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9hY3Rpb24vSUFjdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7SUFRYSxRQUFBLGdCQUFnQixHQUFzQixDQUFDLHlCQUFlLENBQUMsS0FBSyxFQUFFLHlCQUFlLENBQUMsTUFBTSxFQUFFLHlCQUFlLENBQUMsT0FBTyxFQUFFLHlCQUFlLENBQUMsTUFBTSxDQUFDLENBQUM7SUFJcEosTUFBcUIsT0FBTztLQU8zQjtJQUxBO1FBREMsYUFBRyxDQUFDLFFBQVEsQ0FBaUIsb0NBQWtCLENBQUM7MENBQ007SUFFdkQ7UUFEQyxhQUFHLENBQUMsR0FBRyxDQUFDLG9DQUFrQixDQUFDOzhCQUNJO0lBRWhDO1FBREMsYUFBRyxDQUFDLFFBQVEsQ0FBYSxhQUFhLENBQUM7c0NBQ087SUFOaEQsMEJBT0MifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSUFjdGlvbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9hY3Rpb24vSUFjdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0lBUWEsUUFBQSxnQkFBZ0IsR0FBc0IsQ0FBQyx5QkFBZSxDQUFDLEtBQUssRUFBRSx5QkFBZSxDQUFDLE1BQU0sRUFBRSx5QkFBZSxDQUFDLE9BQU8sRUFBRSx5QkFBZSxDQUFDLE1BQU0sQ0FBQyxDQUFDO0lBSXBKLE1BQXFCLE9BQU87S0FPM0I7SUFMQTtRQURDLGFBQUcsQ0FBQyxRQUFRLENBQWlCLG9DQUFrQixDQUFDOzBDQUNNO0lBRXZEO1FBREMsYUFBRyxDQUFDLEdBQUcsQ0FBQyxvQ0FBa0IsQ0FBQzs4QkFDSTtJQUVoQztRQURDLGFBQUcsQ0FBQyxRQUFRLENBQWEsYUFBYSxDQUFDO3NDQUNPO0lBTmhELDBCQU9DIn0=
