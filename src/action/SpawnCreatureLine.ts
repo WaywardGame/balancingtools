@@ -21,7 +21,7 @@ export default new Action()
 			creatureManager.spawn(creatureType, x + 1, y, executor.z, true, true, undefined, true);
 		}
 
-		renderer.computeSpritesInViewport();
+		renderer?.computeSpritesInViewport();
 		action.setUpdateRender();
 		action.setUpdateView();
 	});
