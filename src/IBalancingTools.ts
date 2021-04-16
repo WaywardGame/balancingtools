@@ -1,5 +1,5 @@
-import { EquipType } from "entity/IHuman";
-import { ItemType } from "item/IItem";
+import { EquipType } from "game/entity/IHuman";
+import { ItemType } from "game/item/IItem";
 
 export const BALANCING_TOOLS_ID = "Balancing Tools";
 
@@ -125,13 +125,13 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 		skill: 50,
 		items: [
 			{
-				itemType: ItemType.CopperShield,
+				itemType: ItemType.CopperBuckler,
 				equipType: EquipType.LeftHand,
 			}, {
 				itemType: ItemType.CopperSword,
 				equipType: EquipType.RightHand,
 			}, {
-				itemType: ItemType.CopperBreastPlate,
+				itemType: ItemType.CopperCuirass,
 				equipType: EquipType.Chest,
 			}, {
 				itemType: ItemType.CopperGreaves,
@@ -180,10 +180,10 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 				itemType: ItemType.WroughtIronSword,
 				equipType: EquipType.RightHand,
 			}, {
-				itemType: ItemType.WroughtIronBreastPlate,
+				itemType: ItemType.WroughtIronBreastplate,
 				equipType: EquipType.Chest,
 			}, {
-				itemType: ItemType.WroughtIronGreaves,
+				itemType: ItemType.WroughtIronCuisses,
 				equipType: EquipType.Legs,
 			}, {
 				itemType: ItemType.WroughtIronHelmet,
@@ -223,7 +223,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 		skill: 85,
 		items: [
 			{
-				itemType: ItemType.IronShield,
+				itemType: ItemType.IronHeater,
 				equipType: EquipType.LeftHand,
 			}, {
 				itemType: ItemType.IronSword,
@@ -232,7 +232,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 				itemType: ItemType.IronBreastplate,
 				equipType: EquipType.Chest,
 			}, {
-				itemType: ItemType.IronGreaves,
+				itemType: ItemType.IronCuisses,
 				equipType: EquipType.Legs,
 			}, {
 				itemType: ItemType.IronHelmet,

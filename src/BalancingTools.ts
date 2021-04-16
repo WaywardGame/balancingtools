@@ -1,13 +1,13 @@
-import { ActionType } from "entity/action/IAction";
-import Creature from "entity/creature/Creature";
-import { MoveType } from "entity/IEntity";
-import NPC from "entity/npc/NPC";
 import { EventHandler } from "event/EventManager";
+import { ActionType } from "game/entity/action/IAction";
+import Creature from "game/entity/creature/Creature";
+import { MoveType } from "game/entity/IEntity";
+import NPC from "game/entity/npc/NPC";
+import { ITile } from "game/tile/ITerrain";
 import { Dictionary } from "language/Dictionaries";
 import { InterModRegistration } from "mod/InterModRegistry";
 import Mod from "mod/Mod";
 import Register from "mod/ModRegistry";
-import { ITile } from "tile/ITerrain";
 import DebugTools from "../../debugtools/out/DebugTools";
 import { ModRegistrationMainDialogPanel } from "../../debugtools/out/IDebugTools";
 import Actions from "./action/IAction";

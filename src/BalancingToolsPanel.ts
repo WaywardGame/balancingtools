@@ -1,11 +1,9 @@
-import ActionExecutor from "entity/action/ActionExecutor";
 import Translation from "language/Translation";
-import Button from "newui/component/Button";
-import { CheckButton } from "newui/component/CheckButton";
-import ContextMenu from "newui/component/ContextMenu";
-import InputManager from "newui/input/InputManager";
-import newui from "newui/NewUi";
-import { Tuple } from "utilities/Arrays";
+import Button from "ui/component/Button";
+import { CheckButton } from "ui/component/CheckButton";
+import ContextMenu from "ui/component/ContextMenu";
+import InputManager from "ui/input/InputManager";
+import { Tuple } from "utilities/collection/Arrays";
 import DebugToolsPanel from "../../debugtools/out/ui/component/DebugToolsPanel";
 import { DebugToolsDialogPanelClass } from "../../debugtools/out/ui/DebugToolsDialog";
 import SetDifficulty from "./action/SetDifficulty";
@@ -55,16 +53,16 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 		}
 
 		private toggleFreezeCreatures(freezed: boolean) {
-			ActionExecutor.get(ToggleCreaturesFrozen).execute(localPlayer, freezed);
+			ToggleCreaturesFrozen.execute(localPlayer, freezed);
 		}
 
 		private toggleFreezeNPCs(freezed: boolean) {
-			ActionExecutor.get(ToggleNPCsFrozen).execute(localPlayer, freezed);
+			ToggleNPCsFrozen.execute(localPlayer, freezed);
 		}
 
 		@Bound
 		private showDifficultyContextMenu() {
-			const screen = newui.screens.getTop();
+			const screen = ui.screens.getTop();
 			if (!screen) {
 				return;
 			}
@@ -74,7 +72,7 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 			new ContextMenu(...difficulties.keys()
 				.map(difficulty => Tuple(Difficulty[difficulty], {
 					translation: new Translation(BalancingTools.INSTANCE.dictionaryDifficulty, difficulty),
-					onActivate: () => this.setDifficulty(difficulty)
+					onActivate: () => this.setDifficulty(difficulty),
 				})))
 				.addAllDescribedOptions()
 				.setPosition(...mouse.xy)
@@ -82,12 +80,12 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 		}
 
 		private setDifficulty(difficulty: Difficulty) {
-			ActionExecutor.get(SetDifficulty).execute(localPlayer, difficulty);
+			SetDifficulty.execute(localPlayer, difficulty);
 		}
 
 		@Bound
 		private spawnCreatureLine() {
-			ActionExecutor.get(SpawnCreatureLine).execute(localPlayer);
+			SpawnCreatureLine.execute(localPlayer);
 		}
 	}
 

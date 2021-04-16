@@ -1,12 +1,10 @@
-import { Action } from "entity/action/Action";
-import { ActionArgument } from "entity/action/IAction";
-import { EntityType } from "entity/IEntity";
-import { SkillType } from "entity/IHuman";
-
-// import Heal from "../../../debugtools/out/action/Heal";
+import { Action } from "game/entity/action/Action";
+import { ActionArgument } from "game/entity/action/IAction";
+import { EntityType, StatusEffectChangeReason, StatusType } from "game/entity/IEntity";
+import { SkillType } from "game/entity/IHuman";
+import { IStatMax, Stat } from "game/entity/IStats";
 import { difficulties, Difficulty } from "../IBalancingTools";
-
-import Actions, { defaultUsability } from "./IAction";
+import { defaultUsability } from "./IAction";
 
 export default new Action(ActionArgument.Number)
 	.setUsableBy(EntityType.Player)
@@ -17,9 +15,20 @@ export default new Action(ActionArgument.Number)
 		// delete all items
 		itemManager.removeContainerItems(executor.inventory);
 
-		// refresh stats (via Debug Tools)
-		// action.get(Actions.DEBUG_TOOLS.actionHeal as any as typeof Heal).execute(localPlayer, executor);
-		(action as any).get(Actions.DEBUG_TOOLS.actionHeal).execute(localPlayer, executor);
+		// TODO: Find a way to import this from Debug Tools
+		const health = executor.stat.get<IStatMax>(Stat.Health);
+		const stamina = executor.stat.get<IStatMax>(Stat.Stamina);
+		const hunger = executor.stat.get<IStatMax>(Stat.Hunger);
+		const thirst = executor.stat.get<IStatMax>(Stat.Thirst);
+
+		executor.stat.set(health, executor.asPlayer?.getMaxHealth() ?? health.max);
+		if (stamina) executor.stat.set(stamina, stamina.max);
+		if (hunger) executor.stat.set(hunger, hunger.max);
+		if (thirst) executor.stat.set(thirst, thirst.max);
+
+		executor.setStatus(StatusType.Bleeding, false, StatusEffectChangeReason.Passed);
+		executor.setStatus(StatusType.Burned, false, StatusEffectChangeReason.Passed);
+		executor.setStatus(StatusType.Poisoned, false, StatusEffectChangeReason.Passed);
 
 		// Equip and set skill based on input
 		const skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Marksmanship, SkillType.Throwing];
@@ -37,7 +46,7 @@ export default new Action(ActionArgument.Number)
 		}
 
 		for (let i = 0; i < skillList.length; i++) {
-			executor.setSkillCore(skillList[i], skill);
+			executor.skill.setCore(skillList[i], skill);
 		}
 
 		action.setPassTurn();

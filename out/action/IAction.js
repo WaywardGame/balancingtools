@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "entity/action/IAction", "mod/Mod", "../IBalancingTools"], function (require, exports, IAction_1, Mod_1, IBalancingTools_1) {
+define(["require", "exports", "game/entity/action/IAction", "mod/Mod", "../IBalancingTools"], function (require, exports, IAction_1, Mod_1, IBalancingTools_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.defaultUsability = void 0;
@@ -22,4 +22,4 @@ define(["require", "exports", "entity/action/IAction", "mod/Mod", "../IBalancing
     ], Actions, "DEBUG_TOOLS", void 0);
     exports.default = Actions;
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSUFjdGlvbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9hY3Rpb24vSUFjdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0lBUWEsUUFBQSxnQkFBZ0IsR0FBc0IsQ0FBQyx5QkFBZSxDQUFDLEtBQUssRUFBRSx5QkFBZSxDQUFDLE1BQU0sRUFBRSx5QkFBZSxDQUFDLE9BQU8sRUFBRSx5QkFBZSxDQUFDLE1BQU0sQ0FBQyxDQUFDO0lBSXBKLE1BQXFCLE9BQU87S0FPM0I7SUFMQTtRQURDLGFBQUcsQ0FBQyxRQUFRLENBQWlCLG9DQUFrQixDQUFDOzBDQUNNO0lBRXZEO1FBREMsYUFBRyxDQUFDLEdBQUcsQ0FBQyxvQ0FBa0IsQ0FBQzs4QkFDSTtJQUVoQztRQURDLGFBQUcsQ0FBQyxRQUFRLENBQWEsYUFBYSxDQUFDO3NDQUNPO0lBTmhELDBCQU9DIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSUFjdGlvbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9hY3Rpb24vSUFjdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0lBT2EsUUFBQSxnQkFBZ0IsR0FBc0IsQ0FBQyx5QkFBZSxDQUFDLEtBQUssRUFBRSx5QkFBZSxDQUFDLE1BQU0sRUFBRSx5QkFBZSxDQUFDLE9BQU8sRUFBRSx5QkFBZSxDQUFDLE1BQU0sQ0FBQyxDQUFDO0lBSXBKLE1BQXFCLE9BQU87S0FPM0I7SUFMQTtRQURDLGFBQUcsQ0FBQyxRQUFRLENBQWlCLG9DQUFrQixDQUFDOzBDQUNNO0lBRXZEO1FBREMsYUFBRyxDQUFDLEdBQUcsQ0FBQyxvQ0FBa0IsQ0FBQzs4QkFDSTtJQUVoQztRQURDLGFBQUcsQ0FBQyxRQUFRLENBQWEsYUFBYSxDQUFDO3NDQUNPO0lBTmhELDBCQU9DIn0=

@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "entity/creature/Creature", "entity/npc/NPC", "event/EventManager", "mod/Mod", "mod/ModRegistry", "./action/IAction", "./action/SetDifficulty", "./action/SpawnCreatureLine", "./action/ToggleCreaturesFrozen", "./action/ToggleNPCsFrozen", "./BalancingToolsPanel", "./IBalancingTools"], function (require, exports, Creature_1, NPC_1, EventManager_1, Mod_1, ModRegistry_1, IAction_1, SetDifficulty_1, SpawnCreatureLine_1, ToggleCreaturesFrozen_1, ToggleNPCsFrozen_1, BalancingToolsPanel_1, IBalancingTools_1) {
+define(["require", "exports", "event/EventManager", "game/entity/creature/Creature", "game/entity/npc/NPC", "mod/Mod", "mod/ModRegistry", "./action/IAction", "./action/SetDifficulty", "./action/SpawnCreatureLine", "./action/ToggleCreaturesFrozen", "./action/ToggleNPCsFrozen", "./BalancingToolsPanel", "./IBalancingTools"], function (require, exports, EventManager_1, Creature_1, NPC_1, Mod_1, ModRegistry_1, IAction_1, SetDifficulty_1, SpawnCreatureLine_1, ToggleCreaturesFrozen_1, ToggleNPCsFrozen_1, BalancingToolsPanel_1, IBalancingTools_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class BalancingTools extends Mod_1.default {

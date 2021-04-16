@@ -1,7 +1,7 @@
-import { Action } from "entity/action/Action";
-import { CreatureType } from "entity/creature/ICreature";
-import { EntityType } from "entity/IEntity";
-import { TerrainType } from "tile/ITerrain";
+import { Action } from "game/entity/action/Action";
+import { CreatureType } from "game/entity/creature/ICreature";
+import { EntityType } from "game/entity/IEntity";
+import { TerrainType } from "game/tile/ITerrain";
 import Enums from "utilities/enum/Enums";
 
 export default new Action()
