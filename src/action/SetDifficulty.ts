@@ -31,7 +31,7 @@ export default new Action(ActionArgument.Number)
 		executor.setStatus(StatusType.Poisoned, false, StatusEffectChangeReason.Passed);
 
 		// Equip and set skill based on input
-		const skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Marksmanship, SkillType.Throwing];
+		const skillList = [SkillType.Tactics, SkillType.Parrying, SkillType.Marksmanship, SkillType.Throwing, SkillType.Anatomy];
 
 		const { items, skill } = difficulties.get(difficulty)!;
 

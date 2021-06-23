@@ -11,9 +11,12 @@
 		"modBalancingToolsDifficulty": {
 			"bark": "Bark",
 			"leather": "Leather",
+			"tin": "Tin",
+			"scale": "Scale",
 			"copper": "Copper",
 			"wroughtIron": "Wrought Iron",
-			"iron": "Iron"
+			"iron": "Iron",
+			"bronze": "Bronze"
 		}
 	}
 }

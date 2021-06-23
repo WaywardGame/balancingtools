@@ -19,9 +19,12 @@ export interface ISaveData {
 export enum Difficulty {
 	Bark,
 	Leather,
+	Tin,
+	Scale,
 	Copper,
 	WroughtIron,
 	Iron,
+	Bronze,
 }
 
 export interface IItemSpawnInfo {
@@ -36,7 +39,7 @@ export interface IDifficulty {
 
 export const difficulties = new Map<Difficulty, IDifficulty>([
 	[Difficulty.Bark, {
-		skill: 15,
+		skill: 12.5,
 		items: [
 			{
 				itemType: ItemType.BarkShield,
@@ -73,10 +76,10 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 		],
 	}],
 	[Difficulty.Leather, {
-		skill: 35,
+		skill: 25,
 		items: [
 			{
-				itemType: ItemType.BarkShield,
+				itemType: ItemType.WoodenShield,
 				equipType: EquipType.LeftHand,
 			}, {
 				itemType: ItemType.StoneAxe,
@@ -103,6 +106,9 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 				itemType: ItemType.LeatherBelt,
 				equipType: EquipType.Belt,
 			}, {
+				itemType: ItemType.AnimalPelt,
+				equipType: EquipType.Back,
+			}, {
 				itemType: ItemType.ShortBow,
 			}, {
 				itemType: ItemType.StoneArrow,
@@ -121,8 +127,112 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 			},
 		],
 	}],
-	[Difficulty.Copper, {
+	[Difficulty.Tin, {
+		skill: 37.5,
+		items: [
+			{
+				itemType: ItemType.TinShield,
+				equipType: EquipType.LeftHand,
+			}, {
+				itemType: ItemType.TinSword,
+				equipType: EquipType.RightHand,
+			}, {
+				itemType: ItemType.TinCuirass,
+				equipType: EquipType.Chest,
+			}, {
+				itemType: ItemType.TinChausses,
+				equipType: EquipType.Legs,
+			}, {
+				itemType: ItemType.TinHelmet,
+				equipType: EquipType.Head,
+			}, {
+				itemType: ItemType.TinFootgear,
+				equipType: EquipType.Feet,
+			}, {
+				itemType: ItemType.TinBevor,
+				equipType: EquipType.Neck,
+			}, {
+				itemType: ItemType.TinGloves,
+				equipType: EquipType.Hands,
+			}, {
+				itemType: ItemType.LeatherBelt,
+				equipType: EquipType.Belt,
+			}, {
+				itemType: ItemType.AnimalPelt,
+				equipType: EquipType.Back,
+			}, {
+				itemType: ItemType.LongBow,
+			}, {
+				itemType: ItemType.TinArrow,
+			}, {
+				itemType: ItemType.TinArrow,
+			}, {
+				itemType: ItemType.TinArrow,
+			}, {
+				itemType: ItemType.LeatherSling,
+			}, {
+				itemType: ItemType.TinBullet,
+			}, {
+				itemType: ItemType.TinBullet,
+			}, {
+				itemType: ItemType.TinBullet,
+			},
+		],
+	}],
+	[Difficulty.Scale, {
 		skill: 50,
+		items: [
+			{
+				itemType: ItemType.WoodenShield,
+				equipType: EquipType.LeftHand,
+			}, {
+				itemType: ItemType.ObsidianAxe,
+				equipType: EquipType.RightHand,
+			}, {
+				itemType: ItemType.ScaleVest,
+				equipType: EquipType.Chest,
+			}, {
+				itemType: ItemType.ScaleLeggings,
+				equipType: EquipType.Legs,
+			}, {
+				itemType: ItemType.ScaleCap,
+				equipType: EquipType.Head,
+			}, {
+				itemType: ItemType.ScaleBoots,
+				equipType: EquipType.Feet,
+			}, {
+				itemType: ItemType.ScaleBevor,
+				equipType: EquipType.Neck,
+			}, {
+				itemType: ItemType.ScaleGloves,
+				equipType: EquipType.Hands,
+			}, {
+				itemType: ItemType.ScaleBelt,
+				equipType: EquipType.Belt,
+			}, {
+				itemType: ItemType.AnimalPelt,
+				equipType: EquipType.Back,
+			}, {
+				itemType: ItemType.LongBow,
+			}, {
+				itemType: ItemType.ObsidianArrow,
+			}, {
+				itemType: ItemType.ObsidianArrow,
+			}, {
+				itemType: ItemType.ObsidianArrow,
+			}, {
+				itemType: ItemType.LeatherSling,
+			}, {
+				itemType: ItemType.CopperBullet,
+			}, {
+				itemType: ItemType.CopperBullet,
+			}, {
+				itemType: ItemType.CopperBullet,
+			},
+		],
+	}],
+	[Difficulty.Copper, {
+		skill: 62.5,
 		items: [
 			{
 				itemType: ItemType.CopperBuckler,
@@ -152,6 +262,9 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 				itemType: ItemType.LeatherBelt,
 				equipType: EquipType.Belt,
 			}, {
+				itemType: ItemType.AnimalPelt,
+				equipType: EquipType.Back,
+			}, {
 				itemType: ItemType.LongBow,
 			}, {
 				itemType: ItemType.CopperArrow,
@@ -171,7 +284,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 		],
 	}],
 	[Difficulty.WroughtIron, {
-		skill: 60,
+		skill: 75,
 		items: [
 			{
 				itemType: ItemType.WroughtIronShield,
@@ -201,6 +314,9 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 				itemType: ItemType.LeatherBelt,
 				equipType: EquipType.Belt,
 			}, {
+				itemType: ItemType.AnimalPelt,
+				equipType: EquipType.Back,
+			}, {
 				itemType: ItemType.LongBow,
 			}, {
 				itemType: ItemType.WroughtIronArrow,
@@ -220,7 +336,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 		],
 	}],
 	[Difficulty.Iron, {
-		skill: 85,
+		skill: 87.5,
 		items: [
 			{
 				itemType: ItemType.IronHeater,
@@ -247,8 +363,11 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 				itemType: ItemType.IronGauntlets,
 				equipType: EquipType.Hands,
 			}, {
-				itemType: ItemType.LeatherBelt,
+				itemType: ItemType.ScaleBelt,
 				equipType: EquipType.Belt,
+			}, {
+				itemType: ItemType.MageRobe,
+				equipType: EquipType.Back,
 			}, {
 				itemType: ItemType.CompositeBow,
 			}, {
@@ -265,6 +384,58 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 				itemType: ItemType.IronBullet,
 			}, {
 				itemType: ItemType.IronBullet,
+			},
+		],
+	}],
+	[Difficulty.Bronze, {
+		skill: 100,
+		items: [
+			{
+				itemType: ItemType.BronzeKiteShield,
+				equipType: EquipType.LeftHand,
+			}, {
+				itemType: ItemType.BronzeSword,
+				equipType: EquipType.RightHand,
+			}, {
+				itemType: ItemType.BronzeChestArmor,
+				equipType: EquipType.Chest,
+			}, {
+				itemType: ItemType.BronzeGreaves,
+				equipType: EquipType.Legs,
+			}, {
+				itemType: ItemType.BronzeHelmet,
+				equipType: EquipType.Head,
+			}, {
+				itemType: ItemType.BronzeBoots,
+				equipType: EquipType.Feet,
+			}, {
+				itemType: ItemType.BronzeBevor,
+				equipType: EquipType.Neck,
+			}, {
+				itemType: ItemType.BronzeGauntlets,
+				equipType: EquipType.Hands,
+			}, {
+				itemType: ItemType.ScaleBelt,
+				equipType: EquipType.Belt,
+			}, {
+				itemType: ItemType.MageRobe,
+				equipType: EquipType.Back,
+			}, {
+				itemType: ItemType.CompositeBow,
+			}, {
+				itemType: ItemType.BronzeArrow,
+			}, {
+				itemType: ItemType.BronzeArrow,
+			}, {
+				itemType: ItemType.BronzeArrow,
+			}, {
+				itemType: ItemType.LeatherSling,
+			}, {
+				itemType: ItemType.BronzeBullet,
+			}, {
+				itemType: ItemType.BronzeBullet,
+			}, {
+				itemType: ItemType.BronzeBullet,
 			},
 		],
 	}],
