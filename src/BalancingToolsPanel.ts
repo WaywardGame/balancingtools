@@ -1,17 +1,21 @@
 import Translation from "language/Translation";
 import Button from "ui/component/Button";
+import { RangeRow } from "ui/component/RangeRow";
 import { CheckButton } from "ui/component/CheckButton";
 import ContextMenu from "ui/component/ContextMenu";
 import InputManager from "ui/input/InputManager";
 import { Tuple } from "utilities/collection/Arrays";
 import DebugToolsPanel from "../../debugtools/out/ui/component/DebugToolsPanel";
 import { DebugToolsDialogPanelClass } from "../../debugtools/out/ui/DebugToolsDialog";
-import SetDifficulty from "./action/SetDifficulty";
+import SetEquipment from "./action/SetEquipment";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
+import SetSkills from "./action/SetSkills";
 import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import BalancingTools from "./BalancingTools";
-import { BalancingToolsTranslation, difficulties, Difficulty } from "./IBalancingTools";
+import { BalancingToolsTranslation, equipmentSets, EquipmentSet } from "./IBalancingTools";
+import UiTranslation from "language/dictionary/UiTranslation";
+import { SkillType } from "game/entity/IHuman";
 
 function translation(entry: BalancingToolsTranslation) {
 	return new Translation(BalancingTools.INSTANCE.dictionary, entry);
@@ -38,8 +42,18 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 				.appendTo(this);
 
 			new Button()
-				.setText(translation(BalancingToolsTranslation.SetDifficulty))
-				.event.subscribe("activate", this.showDifficultyContextMenu)
+				.setText(translation(BalancingToolsTranslation.SetEquipment))
+				.event.subscribe("activate", this.showEquipmentContextMenu)
+				.appendTo(this);
+
+			new RangeRow()
+				.setLabel(label => label.setText(translation(BalancingToolsTranslation.SetSkills)))
+				.editRange(range => range
+					.setMin(0)
+					.setMax(100)
+					.setRefreshMethod(() => localPlayer?.skill.getCore(SkillType.Tactics) ?? 0)) // Just use Tactics, but we are actually increasing a bunch of things in SetSkills.ts
+				.setDisplayValue(Translation.ui(UiTranslation.GameStatsPercentage).get)
+				.event.subscribe("finish", this.setSkills)
 				.appendTo(this);
 
 			new Button()
@@ -61,7 +75,7 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 		}
 
 		@Bound
-		private showDifficultyContextMenu() {
+		private showEquipmentContextMenu() {
 			const screen = ui.screens.getTop();
 			if (!screen) {
 				return;
@@ -69,18 +83,23 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 
 			const mouse = InputManager.mouse.position;
 
-			new ContextMenu(...difficulties.keys()
-				.map(difficulty => Tuple(Difficulty[difficulty], {
-					translation: new Translation(BalancingTools.INSTANCE.dictionaryDifficulty, difficulty),
-					onActivate: () => this.setDifficulty(difficulty),
+			new ContextMenu(...equipmentSets.keys()
+				.map(equipment => Tuple(EquipmentSet[equipment], {
+					translation: new Translation(BalancingTools.INSTANCE.dictionaryEquipment, equipment),
+					onActivate: () => this.setEquipment(equipment),
 				})))
 				.addAllDescribedOptions()
 				.setPosition(...mouse.xy)
 				.schedule(screen.setContextMenu);
 		}
 
-		private setDifficulty(difficulty: Difficulty) {
-			SetDifficulty.execute(localPlayer, difficulty);
+		private setEquipment(equipment: EquipmentSet) {
+			SetEquipment.execute(localPlayer, equipment);
+		}
+
+		@Bound
+		private setSkills(_: any, value: number) {
+			SetSkills.execute(localPlayer, value);
 		}
 
 		@Bound

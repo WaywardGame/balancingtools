@@ -5,10 +5,11 @@
 			"panelName": "Balancing",
 			"freezeCreatures": "Freeze Creatures",
 			"freezeNPCs": "Freeze NPCs",
-			"setDifficulty": "Set Difficulty",
+			"setEquipment": "Set Equipment",
+			"setSkills": "Set Skills",
 			"spawnCreatureLine": "Spawn Creature Line"
 		},
-		"modBalancingToolsDifficulty": {
+		"modBalancingToolsEquipment": {
 			"bark": "Bark",
 			"leather": "Leather",
 			"tin": "Tin",
@@ -16,7 +17,8 @@
 			"copper": "Copper",
 			"wroughtIron": "Wrought Iron",
 			"iron": "Iron",
-			"bronze": "Bronze"
+			"bronze": "Bronze",
+			"blackplate": "Blackplate"
 		}
 	}
 }

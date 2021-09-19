@@ -1,7 +1,7 @@
 {
 	"name": "Balancing Tools",
 	"description": "Adds a set of balancing tools to the debug tools mod menu.",
-	"version": "2.1",
+	"version": "2.2",
 	"author": "Spacetech & Drathy",
 	"github": "https://github.com/WaywardGame/balancingtools",
 	"dependencies": [

@@ -6,7 +6,8 @@ export const BALANCING_TOOLS_ID = "Balancing Tools";
 export enum BalancingToolsTranslation {
 	PanelName,
 	FreezeCreatures,
-	SetDifficulty,
+	SetEquipment,
+	SetSkills,
 	SpawnCreatureLine,
 	FreezeNPCs,
 }
@@ -16,7 +17,7 @@ export interface ISaveData {
 	freezeNPCs?: boolean;
 }
 
-export enum Difficulty {
+export enum EquipmentSet {
 	Bark,
 	Leather,
 	Tin,
@@ -25,6 +26,7 @@ export enum Difficulty {
 	WroughtIron,
 	Iron,
 	Bronze,
+	Blackplate,
 }
 
 export interface IItemSpawnInfo {
@@ -32,14 +34,12 @@ export interface IItemSpawnInfo {
 	equipType?: EquipType;
 }
 
-export interface IDifficulty {
+export interface IEquipmentSet {
 	items: IItemSpawnInfo[];
-	skill: number;
 }
 
-export const difficulties = new Map<Difficulty, IDifficulty>([
-	[Difficulty.Bark, {
-		skill: 12.5,
+export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
+	[EquipmentSet.Bark, {
 		items: [
 			{
 				itemType: ItemType.BarkShield,
@@ -75,8 +75,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 			},
 		],
 	}],
-	[Difficulty.Leather, {
-		skill: 25,
+	[EquipmentSet.Leather, {
 		items: [
 			{
 				itemType: ItemType.WoodenShield,
@@ -127,8 +126,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 			},
 		],
 	}],
-	[Difficulty.Tin, {
-		skill: 37.5,
+	[EquipmentSet.Tin, {
 		items: [
 			{
 				itemType: ItemType.TinShield,
@@ -179,8 +177,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 			},
 		],
 	}],
-	[Difficulty.Scale, {
-		skill: 50,
+	[EquipmentSet.Scale, {
 		items: [
 			{
 				itemType: ItemType.WoodenShield,
@@ -231,8 +228,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 			},
 		],
 	}],
-	[Difficulty.Copper, {
-		skill: 62.5,
+	[EquipmentSet.Copper, {
 		items: [
 			{
 				itemType: ItemType.CopperBuckler,
@@ -283,8 +279,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 			},
 		],
 	}],
-	[Difficulty.WroughtIron, {
-		skill: 75,
+	[EquipmentSet.WroughtIron, {
 		items: [
 			{
 				itemType: ItemType.WroughtIronShield,
@@ -335,8 +330,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 			},
 		],
 	}],
-	[Difficulty.Iron, {
-		skill: 87.5,
+	[EquipmentSet.Iron, {
 		items: [
 			{
 				itemType: ItemType.IronHeater,
@@ -387,8 +381,7 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 			},
 		],
 	}],
-	[Difficulty.Bronze, {
-		skill: 100,
+	[EquipmentSet.Bronze, {
 		items: [
 			{
 				itemType: ItemType.BronzeKiteShield,
@@ -413,6 +406,57 @@ export const difficulties = new Map<Difficulty, IDifficulty>([
 				equipType: EquipType.Neck,
 			}, {
 				itemType: ItemType.BronzeGauntlets,
+				equipType: EquipType.Hands,
+			}, {
+				itemType: ItemType.ScaleBelt,
+				equipType: EquipType.Belt,
+			}, {
+				itemType: ItemType.MageRobe,
+				equipType: EquipType.Back,
+			}, {
+				itemType: ItemType.CompositeBow,
+			}, {
+				itemType: ItemType.BronzeArrow,
+			}, {
+				itemType: ItemType.BronzeArrow,
+			}, {
+				itemType: ItemType.BronzeArrow,
+			}, {
+				itemType: ItemType.LeatherSling,
+			}, {
+				itemType: ItemType.BronzeBullet,
+			}, {
+				itemType: ItemType.BronzeBullet,
+			}, {
+				itemType: ItemType.BronzeBullet,
+			},
+		],
+	}],
+	[EquipmentSet.Blackplate, {
+		items: [
+			{
+				itemType: ItemType.BronzeKiteShield,
+				equipType: EquipType.LeftHand,
+			}, {
+				itemType: ItemType.DeathKnightAxe,
+				equipType: EquipType.RightHand,
+			}, {
+				itemType: ItemType.BlackplateBreastplate,
+				equipType: EquipType.Chest,
+			}, {
+				itemType: ItemType.BlackplateGreaves,
+				equipType: EquipType.Legs,
+			}, {
+				itemType: ItemType.BlackplateHelmet,
+				equipType: EquipType.Head,
+			}, {
+				itemType: ItemType.BlackplateSabatons,
+				equipType: EquipType.Feet,
+			}, {
+				itemType: ItemType.BlackplateGorget,
+				equipType: EquipType.Neck,
+			}, {
+				itemType: ItemType.BlackplateGauntlets,
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ScaleBelt,

@@ -8,15 +8,16 @@ import { Dictionary } from "language/Dictionaries";
 import { InterModRegistration } from "mod/InterModRegistry";
 import Mod from "mod/Mod";
 import Register from "mod/ModRegistry";
+import SetSkills from "./action/SetSkills";
 import DebugTools from "../../debugtools/out/DebugTools";
 import { ModRegistrationMainDialogPanel } from "../../debugtools/out/IDebugTools";
 import Actions from "./action/IAction";
-import SetDifficulty from "./action/SetDifficulty";
+import SetEquipment from "./action/SetEquipment";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
 import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import BalancingToolsPanel from "./BalancingToolsPanel";
-import { BalancingToolsTranslation, BALANCING_TOOLS_ID, Difficulty, ISaveData } from "./IBalancingTools";
+import { BalancingToolsTranslation, BALANCING_TOOLS_ID, EquipmentSet, ISaveData } from "./IBalancingTools";
 
 export default class BalancingTools extends Mod {
 
@@ -31,8 +32,8 @@ export default class BalancingTools extends Mod {
 
 	@Register.dictionary("BalancingTools", BalancingToolsTranslation)
 	public readonly dictionary: Dictionary;
-	@Register.dictionary("Difficulty", Difficulty)
-	public readonly dictionaryDifficulty: Dictionary;
+	@Register.dictionary("Equipment", EquipmentSet)
+	public readonly dictionaryEquipment: Dictionary;
 
 	@Mod.saveData(BALANCING_TOOLS_ID)
 	public readonly saveData: ISaveData;
@@ -50,8 +51,11 @@ export default class BalancingTools extends Mod {
 	@Register.action("ToggleNPCsFrozen", ToggleNPCsFrozen)
 	public readonly actionToggleNPCsFrozen: ActionType;
 
-	@Register.action("SetDifficulty", SetDifficulty)
-	public readonly actionSetDifficulty: ActionType;
+	@Register.action("SetEquipment", SetEquipment)
+	public readonly actionSetEquipment: ActionType;
+
+	@Register.action("SetSkills", SetSkills)
+	public readonly actionSetSkills: ActionType;
 
 	@Register.action("SpawnCreatureLine", SpawnCreatureLine)
 	public readonly actionSpawnCreatureLine: ActionType;

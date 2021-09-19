@@ -16,7 +16,7 @@ On Linux: path/to/wayward/install/wayward +mod update .
 Open the folder in Visual Studio Code and build with Ctrl+Shift+B.
 
 ## Steam Workshop
-[http://steamcommunity.com/sharedfiles/filedetails/?id=474819583](http://steamcommunity.com/sharedfiles/filedetails/?id=474819583)
+[https://steamcommunity.com/sharedfiles/filedetails/?id=474819583](https://steamcommunity.com/sharedfiles/filedetails/?id=474819583)
 
 ## Screenshots
 ![Balancing Tools](https://raw.githubusercontent.com/WaywardGame/balancingtools/master/mod.png "Balancing Tools")
