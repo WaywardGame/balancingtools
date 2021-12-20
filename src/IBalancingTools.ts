@@ -23,6 +23,7 @@ export enum EquipmentSet {
 	Tin,
 	Scale,
 	Copper,
+	ArmoredScale,
 	WroughtIron,
 	Iron,
 	Bronze,
@@ -279,6 +280,57 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 			},
 		],
 	}],
+	[EquipmentSet.ArmoredScale, {
+		items: [
+			{
+				itemType: ItemType.WoodenShield,
+				equipType: EquipType.LeftHand,
+			}, {
+				itemType: ItemType.Macuahuitl,
+				equipType: EquipType.RightHand,
+			}, {
+				itemType: ItemType.ArmoredScaleVest,
+				equipType: EquipType.Chest,
+			}, {
+				itemType: ItemType.ArmoredScaleCuisses,
+				equipType: EquipType.Legs,
+			}, {
+				itemType: ItemType.ArmoredScaleCrown,
+				equipType: EquipType.Head,
+			}, {
+				itemType: ItemType.ArmoredScaleBoots,
+				equipType: EquipType.Feet,
+			}, {
+				itemType: ItemType.ArmoredScaleBevor,
+				equipType: EquipType.Neck,
+			}, {
+				itemType: ItemType.ArmoredScaleGloves,
+				equipType: EquipType.Hands,
+			}, {
+				itemType: ItemType.ArmoredScaleBelt,
+				equipType: EquipType.Belt,
+			}, {
+				itemType: ItemType.AnimalPelt,
+				equipType: EquipType.Back,
+			}, {
+				itemType: ItemType.LongBow,
+			}, {
+				itemType: ItemType.ObsidianArrow,
+			}, {
+				itemType: ItemType.ObsidianArrow,
+			}, {
+				itemType: ItemType.ObsidianArrow,
+			}, {
+				itemType: ItemType.LeatherSling,
+			}, {
+				itemType: ItemType.CopperBullet,
+			}, {
+				itemType: ItemType.CopperBullet,
+			}, {
+				itemType: ItemType.CopperBullet,
+			},
+		],
+	}],
 	[EquipmentSet.WroughtIron, {
 		items: [
 			{
@@ -408,7 +460,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.BronzeGauntlets,
 				equipType: EquipType.Hands,
 			}, {
-				itemType: ItemType.ScaleBelt,
+				itemType: ItemType.ArmoredScaleBelt,
 				equipType: EquipType.Belt,
 			}, {
 				itemType: ItemType.MageRobe,

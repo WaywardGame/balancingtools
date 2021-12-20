@@ -1,7 +1,7 @@
 import { ActionUsability } from "game/entity/action/IAction";
 import Mod from "mod/Mod";
 import Log from "utilities/Log";
-import DebugTools from "../../../debugtools/out/DebugTools";
+import DebugTools from "@wayward/debugtools";
 import BalancingTools from "../BalancingTools";
 import { BALANCING_TOOLS_ID } from "../IBalancingTools";
 

@@ -4,7 +4,7 @@ import { EntityType } from "game/entity/IEntity";
 import { SkillType } from "game/entity/IHuman";
 import { defaultUsability } from "./IAction";
 
-export default new Action(ActionArgument.Number)
+export default new Action(ActionArgument.Float64)
 	.setUsableBy(EntityType.Player)
 	.setUsableWhen(...defaultUsability)
 	.setHandler((action, value) => {

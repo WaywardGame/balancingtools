@@ -15,19 +15,19 @@ export default new Action()
 			const y = executor.y + creatureType;
 
 			for (var i = -1; i <= 2; i++) {
-				const tile = game.getTile(x + i, y, executor.z);
+				const tile = executor.island.getTile(x + i, y, executor.z);
 				if (!tile) {
 					continue;
 				}
 
 				if (tile.doodad) {
-					doodadManager.remove(tile.doodad);
+					executor.island.doodads.remove(tile.doodad);
 				}
-				game.changeTile(TerrainType.Dirt, x + i, y, executor.z, false);
+				executor.island.changeTile(TerrainType.Dirt, x + i, y, executor.z, false);
 			}
 
-			creatureManager.spawn(creatureType, x, y, executor.z, true, undefined, undefined, true);
-			creatureManager.spawn(creatureType, x + 1, y, executor.z, true, true, undefined, true);
+			executor.island.creatures.spawn(creatureType, x, y, executor.z, true, undefined, undefined, true);
+			executor.island.creatures.spawn(creatureType, x + 1, y, executor.z, true, true, undefined, true);
 		}
 
 		renderer?.computeSpritesInViewport();

@@ -1,24 +1,24 @@
+import { SkillType } from "game/entity/IHuman";
+import UiTranslation from "language/dictionary/UiTranslation";
 import Translation from "language/Translation";
 import Button from "ui/component/Button";
-import { RangeRow } from "ui/component/RangeRow";
 import { CheckButton } from "ui/component/CheckButton";
 import ContextMenu from "ui/component/ContextMenu";
+import { RangeRow } from "ui/component/RangeRow";
 import InputManager from "ui/input/InputManager";
 import { Tuple } from "utilities/collection/Arrays";
-import DebugToolsPanel from "../../debugtools/out/ui/component/DebugToolsPanel";
-import { DebugToolsDialogPanelClass } from "../../debugtools/out/ui/DebugToolsDialog";
+import { Bound } from "utilities/Decorators";
+import { DebugToolsPanel, DebugToolsDialogPanelClass } from "@wayward/debugtools";
 import SetEquipment from "./action/SetEquipment";
-import SpawnCreatureLine from "./action/SpawnCreatureLine";
 import SetSkills from "./action/SetSkills";
+import SpawnCreatureLine from "./action/SpawnCreatureLine";
 import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import BalancingTools from "./BalancingTools";
-import { BalancingToolsTranslation, equipmentSets, EquipmentSet } from "./IBalancingTools";
-import UiTranslation from "language/dictionary/UiTranslation";
-import { SkillType } from "game/entity/IHuman";
+import { BalancingToolsTranslation, EquipmentSet, equipmentSets } from "./IBalancingTools";
 
 function translation(entry: BalancingToolsTranslation) {
-	return new Translation(BalancingTools.INSTANCE.dictionary, entry);
+	return Translation.get(BalancingTools.INSTANCE.dictionary, entry);
 }
 
 // tslint:disable variable-name
@@ -62,7 +62,7 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 				.appendTo(this);
 		}
 
-		@Override public getTranslation() {
+		public override getTranslation() {
 			return translation(BalancingToolsTranslation.PanelName);
 		}
 
@@ -85,7 +85,7 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 
 			new ContextMenu(...equipmentSets.keys()
 				.map(equipment => Tuple(EquipmentSet[equipment], {
-					translation: new Translation(BalancingTools.INSTANCE.dictionaryEquipment, equipment),
+					translation: Translation.get(BalancingTools.INSTANCE.dictionaryEquipment, equipment),
 					onActivate: () => this.setEquipment(equipment),
 				})))
 				.addAllDescribedOptions()

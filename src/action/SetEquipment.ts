@@ -4,7 +4,7 @@ import { EntityType } from "game/entity/IEntity";
 import { EquipmentSet, equipmentSets } from "../IBalancingTools";
 import { defaultUsability } from "./IAction";
 
-export default new Action(ActionArgument.Number)
+export default new Action(ActionArgument.Integer32)
 	.setUsableBy(EntityType.Player)
 	.setUsableWhen(...defaultUsability)
 	.setHandler((action, equipment: EquipmentSet) => {
