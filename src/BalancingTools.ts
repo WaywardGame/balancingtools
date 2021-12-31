@@ -60,7 +60,7 @@ export default class BalancingTools extends Mod {
 	public readonly actionSpawnCreatureLine: ActionType;
 
 	////////////////////////////////////
-	// Hooks
+	// Event Handlers
 	//
 
 	/**
