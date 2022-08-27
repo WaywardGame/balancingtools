@@ -78,7 +78,7 @@ export default class BalancingTools extends Mod {
 	/**
 	 * Disables NPC movement
 	 */
-	@EventHandler(NPC, "canMove")
+	@EventHandler(NPC, "canNPCMove")
 	public canNPCMove(npc: NPC, tile: ITile, x: number, y: number, z: number, moveType: MoveType): boolean | undefined {
 		if (this.saveData.freezeNPCs) {
 			return false;
