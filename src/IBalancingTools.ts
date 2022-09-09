@@ -104,7 +104,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -155,7 +155,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -206,7 +206,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -257,7 +257,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -308,7 +308,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ArmoredScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -359,7 +359,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -410,7 +410,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.MageRobe,
 				equipType: EquipType.Back,
@@ -461,7 +461,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ArmoredScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.MageRobe,
 				equipType: EquipType.Back,
@@ -512,7 +512,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.MageRobe,
 				equipType: EquipType.Back,
