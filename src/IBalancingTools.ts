@@ -44,10 +44,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.BarkShield,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
 				itemType: ItemType.WoodenSpear,
-				equipType: EquipType.RightHand,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.BarkTunic,
 				equipType: EquipType.Chest,
@@ -68,11 +68,11 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 			}, {
 				itemType: ItemType.CordedSling,
 			}, {
-				itemType: ItemType.StoneBullet,
+				itemType: ItemType.GraniteBullet,
 			}, {
-				itemType: ItemType.StoneBullet,
+				itemType: ItemType.GraniteBullet,
 			}, {
-				itemType: ItemType.StoneBullet,
+				itemType: ItemType.GraniteBullet,
 			},
 		],
 	}],
@@ -80,10 +80,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.WoodenShield,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.StoneAxe,
-				equipType: EquipType.RightHand,
+				itemType: ItemType.GraniteAxe,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.LeatherTunic,
 				equipType: EquipType.Chest,
@@ -104,26 +104,26 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
 			}, {
 				itemType: ItemType.ShortBow,
 			}, {
-				itemType: ItemType.StoneArrow,
+				itemType: ItemType.GraniteArrow,
 			}, {
-				itemType: ItemType.StoneArrow,
+				itemType: ItemType.GraniteArrow,
 			}, {
-				itemType: ItemType.StoneArrow,
+				itemType: ItemType.GraniteArrow,
 			}, {
 				itemType: ItemType.LeatherSling,
 			}, {
-				itemType: ItemType.StoneBullet,
+				itemType: ItemType.GraniteBullet,
 			}, {
-				itemType: ItemType.StoneBullet,
+				itemType: ItemType.GraniteBullet,
 			}, {
-				itemType: ItemType.StoneBullet,
+				itemType: ItemType.GraniteBullet,
 			},
 		],
 	}],
@@ -131,10 +131,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.TinShield,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
 				itemType: ItemType.TinSword,
-				equipType: EquipType.RightHand,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.TinCuirass,
 				equipType: EquipType.Chest,
@@ -155,7 +155,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -182,10 +182,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.WoodenShield,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
 				itemType: ItemType.ObsidianAxe,
-				equipType: EquipType.RightHand,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.ScaleVest,
 				equipType: EquipType.Chest,
@@ -206,7 +206,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -233,10 +233,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.CopperBuckler,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
 				itemType: ItemType.CopperSword,
-				equipType: EquipType.RightHand,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.CopperCuirass,
 				equipType: EquipType.Chest,
@@ -257,7 +257,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -284,10 +284,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.WoodenShield,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
 				itemType: ItemType.Macuahuitl,
-				equipType: EquipType.RightHand,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.ArmoredScaleVest,
 				equipType: EquipType.Chest,
@@ -308,7 +308,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ArmoredScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -335,10 +335,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.WroughtIronShield,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
 				itemType: ItemType.WroughtIronSword,
-				equipType: EquipType.RightHand,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.WroughtIronBreastplate,
 				equipType: EquipType.Chest,
@@ -359,7 +359,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.LeatherBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.AnimalPelt,
 				equipType: EquipType.Back,
@@ -386,10 +386,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.IronHeater,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
 				itemType: ItemType.IronSword,
-				equipType: EquipType.RightHand,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.IronBreastplate,
 				equipType: EquipType.Chest,
@@ -410,7 +410,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.MageRobe,
 				equipType: EquipType.Back,
@@ -437,10 +437,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.BronzeKiteShield,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
 				itemType: ItemType.BronzeSword,
-				equipType: EquipType.RightHand,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.BronzeChestArmor,
 				equipType: EquipType.Chest,
@@ -461,7 +461,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ArmoredScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.MageRobe,
 				equipType: EquipType.Back,
@@ -488,10 +488,10 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 		items: [
 			{
 				itemType: ItemType.BronzeKiteShield,
-				equipType: EquipType.LeftHand,
+				equipType: EquipType.OffHand,
 			}, {
 				itemType: ItemType.DeathKnightAxe,
-				equipType: EquipType.RightHand,
+				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.BlackplateBreastplate,
 				equipType: EquipType.Chest,
@@ -512,7 +512,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				equipType: EquipType.Hands,
 			}, {
 				itemType: ItemType.ScaleBelt,
-				equipType: EquipType.Belt,
+				equipType: EquipType.Waist,
 			}, {
 				itemType: ItemType.MageRobe,
 				equipType: EquipType.Back,

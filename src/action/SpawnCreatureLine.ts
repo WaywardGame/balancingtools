@@ -30,7 +30,7 @@ export default new Action()
 			executor.island.creatures.spawn(creatureType, x + 1, y, executor.z, true, true, undefined, true);
 		}
 
-		renderer?.computeSpritesInViewport();
+		renderers.computeSpritesInViewport();
 		action.setUpdateRender();
 		action.setUpdateView();
 	});
