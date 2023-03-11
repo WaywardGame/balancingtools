@@ -4,10 +4,11 @@ export declare const BALANCING_TOOLS_ID = "Balancing Tools";
 export declare enum BalancingToolsTranslation {
     PanelName = 0,
     FreezeCreatures = 1,
-    SetEquipment = 2,
-    SetSkills = 3,
-    SpawnCreatureLine = 4,
-    FreezeNPCs = 5
+    EquipmentQuality = 2,
+    SetEquipment = 3,
+    SetSkills = 4,
+    SpawnCreatureLine = 5,
+    FreezeNPCs = 6
 }
 export interface ISaveData {
     freezeCreatures?: boolean;

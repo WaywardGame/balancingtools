@@ -4,7 +4,7 @@ import { ActionType } from "game/entity/action/IAction";
 import Creature from "game/entity/creature/Creature";
 import { MoveType } from "game/entity/IEntity";
 import NPC from "game/entity/npc/NPC";
-import { ITile } from "game/tile/ITerrain";
+import Tile from "game/tile/Tile";
 import Dictionary from "language/Dictionary";
 import { InterModRegistration } from "mod/InterModRegistry";
 import Mod from "mod/Mod";
@@ -67,7 +67,7 @@ export default class BalancingTools extends Mod {
 	 * Disables creature movement
 	 */
 	@EventHandler(Creature, "canMove")
-	public canCreatureMove(creature: Creature, tile: ITile, x: number, y: number, z: number, moveType: MoveType): boolean | undefined {
+	public canCreatureMove(creature: Creature, tile: Tile, moveType: MoveType): boolean | undefined {
 		if (this.saveData.freezeCreatures) {
 			return false;
 		}
@@ -79,7 +79,7 @@ export default class BalancingTools extends Mod {
 	 * Disables NPC movement
 	 */
 	@EventHandler(NPC, "canNPCMove")
-	public canNPCMove(npc: NPC, tile: ITile, x: number, y: number, z: number, moveType: MoveType): boolean | undefined {
+	public canNPCMove(npc: NPC, tile: Tile, moveType: MoveType): boolean | undefined {
 		if (this.saveData.freezeNPCs) {
 			return false;
 		}
