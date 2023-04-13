@@ -7,7 +7,7 @@ import ContextMenu from "ui/component/ContextMenu";
 import { RangeRow } from "ui/component/RangeRow";
 import Dropdown from "ui/component/Dropdown";
 import InputManager from "ui/input/InputManager";
-import { Tuple } from "utilities/collection/Arrays";
+import { Tuple } from "utilities/collection/Tuple";
 import { Bound } from "utilities/Decorators";
 import { DebugToolsPanel, DebugToolsDialogPanelClass } from "@wayward/debugtools";
 import SetEquipment from "./action/SetEquipment";
