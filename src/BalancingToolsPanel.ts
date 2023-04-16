@@ -71,7 +71,7 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 					.setMin(0)
 					.setMax(100)
 					.setRefreshMethod(() => localPlayer?.skill.getCore(SkillType.Tactics) ?? 0)) // Just use Tactics, but we are actually increasing a bunch of things in SetSkills.ts
-				.setDisplayValue(Translation.ui(UiTranslation.GameStatsPercentage).get)
+				.setDisplayValue(Translation.ui(UiTranslation.MenuSharedValuePercentage).get)
 				.event.subscribe("finish", this.setSkills)
 				.appendTo(this);
 
