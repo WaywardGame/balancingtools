@@ -6,7 +6,7 @@ import { EquipmentSet, equipmentSets } from "../IBalancingTools";
 import { defaultUsability } from "./IAction";
 
 export default new Action(ActionArgument.Integer32, ActionArgument.Integer32)
-	.setUsableBy(EntityType.Player)
+	.setUsableBy(EntityType.Human)
 	.setUsableWhen(...defaultUsability)
 	.setHandler((action, equipment: EquipmentSet, quality: Quality) => {
 		const executor = action.executor;

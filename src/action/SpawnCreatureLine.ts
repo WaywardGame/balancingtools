@@ -5,7 +5,7 @@ import { TerrainType } from "game/tile/ITerrain";
 import Enums from "utilities/enum/Enums";
 
 export default new Action()
-	.setUsableBy(EntityType.Player)
+	.setUsableBy(EntityType.Human)
 	.setHandler(action => {
 		const executor = action.executor;
 
