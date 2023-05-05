@@ -1,13 +1,13 @@
 {
 	"name": "Balancing Tools",
 	"description": "Adds a set of balancing tools to the debug tools mod menu.",
-	"version": "2.2",
+	"version": "2.2.1",
 	"author": "Spacetech & Drathy",
 	"github": "https://github.com/WaywardGame/balancingtools",
 	"dependencies": [
 		"474819610"
 	],
-	"waywardVersion": "2.12.0-beta",
+	"waywardVersion": "2.13.0-beta",
 	"multiplayer": "compatible",
 	"unloadable": true,
 	"file": "out/BalancingTools.js",

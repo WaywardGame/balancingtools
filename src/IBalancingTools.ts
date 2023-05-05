@@ -6,6 +6,7 @@ export const BALANCING_TOOLS_ID = "Balancing Tools";
 export enum BalancingToolsTranslation {
 	PanelName,
 	FreezeCreatures,
+	EquipmentQuality,
 	SetEquipment,
 	SetSkills,
 	SpawnCreatureLine,

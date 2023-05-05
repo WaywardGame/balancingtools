@@ -5,6 +5,7 @@
 			"panelName": "Balancing",
 			"freezeCreatures": "Freeze Creatures",
 			"freezeNPCs": "Freeze NPCs",
+			"equipmentQuality": "Equipment Quality",
 			"setEquipment": "Set Equipment",
 			"setSkills": "Set Skills",
 			"spawnCreatureLine": "Spawn Creature Line"

@@ -5,8 +5,9 @@ import Button from "ui/component/Button";
 import { CheckButton } from "ui/component/CheckButton";
 import ContextMenu from "ui/component/ContextMenu";
 import { RangeRow } from "ui/component/RangeRow";
+import Dropdown from "ui/component/Dropdown";
 import InputManager from "ui/input/InputManager";
-import { Tuple } from "utilities/collection/Arrays";
+import { Tuple } from "utilities/collection/Tuple";
 import { Bound } from "utilities/Decorators";
 import { DebugToolsPanel, DebugToolsDialogPanelClass } from "@wayward/debugtools";
 import SetEquipment from "./action/SetEquipment";
@@ -16,6 +17,10 @@ import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import BalancingTools from "./BalancingTools";
 import { BalancingToolsTranslation, EquipmentSet, equipmentSets } from "./IBalancingTools";
+import { LabelledRow } from "ui/component/LabelledRow";
+import { Quality } from "game/IObject";
+import Dictionary from "language/Dictionary";
+import Enums from "utilities/enum/Enums";
 
 function translation(entry: BalancingToolsTranslation) {
 	return Translation.get(BalancingTools.INSTANCE.dictionary, entry);
@@ -25,6 +30,8 @@ function translation(entry: BalancingToolsTranslation) {
 
 const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPanel) {
 	class BalancingToolsPanelClass extends DebugToolsPanelClass {
+
+		private readonly dropdownItemQuality: Dropdown<Quality>;
 
 		public constructor() {
 			super();
@@ -46,13 +53,25 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 				.event.subscribe("activate", this.showEquipmentContextMenu)
 				.appendTo(this);
 
+			new LabelledRow()
+				.classes.add("dropdown-label")
+				.setLabel(label => label.setText(translation(BalancingToolsTranslation.EquipmentQuality)))
+				.append(this.dropdownItemQuality = new Dropdown<Quality>()
+					.setRefreshMethod(() => ({
+						defaultOption: Quality.Random,
+						options: Enums.values(Quality)
+							.map(quality => Tuple(quality, Translation.get(Dictionary.Quality, quality)))
+							.map(([id, t]) => Tuple(id, (option: Button) => option.setText(t))),
+					})))
+				.appendTo(this);
+
 			new RangeRow()
 				.setLabel(label => label.setText(translation(BalancingToolsTranslation.SetSkills)))
 				.editRange(range => range
 					.setMin(0)
 					.setMax(100)
 					.setRefreshMethod(() => localPlayer?.skill.getCore(SkillType.Tactics) ?? 0)) // Just use Tactics, but we are actually increasing a bunch of things in SetSkills.ts
-				.setDisplayValue(Translation.ui(UiTranslation.GameStatsPercentage).get)
+				.setDisplayValue(Translation.ui(UiTranslation.MenuSharedValuePercentage).get)
 				.event.subscribe("finish", this.setSkills)
 				.appendTo(this);
 
@@ -86,15 +105,15 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 			new ContextMenu(...equipmentSets.keys()
 				.map(equipment => Tuple(EquipmentSet[equipment], {
 					translation: Translation.get(BalancingTools.INSTANCE.dictionaryEquipment, equipment),
-					onActivate: () => this.setEquipment(equipment),
+					onActivate: () => this.setEquipment(equipment, this.dropdownItemQuality.selection),
 				})))
 				.addAllDescribedOptions()
 				.setPosition(...mouse.xy)
 				.schedule(screen.setContextMenu);
 		}
 
-		private setEquipment(equipment: EquipmentSet) {
-			SetEquipment.execute(localPlayer, equipment);
+		private setEquipment(equipment: EquipmentSet, selection: Quality) {
+			SetEquipment.execute(localPlayer, equipment, selection);
 		}
 
 		@Bound

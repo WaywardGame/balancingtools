@@ -5,7 +5,7 @@ import { TerrainType } from "game/tile/ITerrain";
 import Enums from "utilities/enum/Enums";
 
 export default new Action()
-	.setUsableBy(EntityType.Player)
+	.setUsableBy(EntityType.Human)
 	.setHandler(action => {
 		const executor = action.executor;
 
@@ -23,14 +23,15 @@ export default new Action()
 				if (tile.doodad) {
 					executor.island.doodads.remove(tile.doodad);
 				}
-				executor.island.changeTile(TerrainType.Dirt, x + i, y, executor.z, false);
+
+				tile.changeTile(TerrainType.Dirt, false);
 			}
 
-			executor.island.creatures.spawn(creatureType, x, y, executor.z, true, undefined, undefined, true);
-			executor.island.creatures.spawn(creatureType, x + 1, y, executor.z, true, true, undefined, true);
+			executor.island.creatures.spawn(creatureType, executor.island.getTile(x, y, executor.z), true, undefined, undefined, true);
+			executor.island.creatures.spawn(creatureType, executor.island.getTile(x + 1, y, executor.z), true, true, undefined, true);
 		}
 
-		renderers.computeSpritesInViewport();
+		renderers.computeSpritesInViewport(action.executor);
 		action.setUpdateRender();
 		action.setUpdateView();
 	});
