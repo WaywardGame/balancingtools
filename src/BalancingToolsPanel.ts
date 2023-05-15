@@ -21,6 +21,8 @@ import { LabelledRow } from "ui/component/LabelledRow";
 import { Quality } from "game/IObject";
 import Dictionary from "language/Dictionary";
 import Enums from "utilities/enum/Enums";
+import ToggleCreaturesDisableAttack from "./action/ToggleCreaturesDisableAttack";
+import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
 
 function translation(entry: BalancingToolsTranslation) {
 	return Translation.get(BalancingTools.INSTANCE.dictionary, entry);
@@ -46,6 +48,18 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 				.setText(translation(BalancingToolsTranslation.FreezeNPCs))
 				.setRefreshMethod(() => !!BalancingTools.INSTANCE.saveData.freezeNPCs)
 				.event.subscribe("toggle", (_, checked) => this.toggleFreezeNPCs(checked))
+				.appendTo(this);
+
+			new CheckButton()
+				.setText(translation(BalancingToolsTranslation.DisableAttackCreatures))
+				.setRefreshMethod(() => !!BalancingTools.INSTANCE.saveData.disableAttackCreatures)
+				.event.subscribe("toggle", (_, checked) => this.toggleDisableAttackCreatures(checked))
+				.appendTo(this);
+
+			new CheckButton()
+				.setText(translation(BalancingToolsTranslation.DisableAttackNPCs))
+				.setRefreshMethod(() => !!BalancingTools.INSTANCE.saveData.disableAttackNPCs)
+				.event.subscribe("toggle", (_, checked) => this.toggleDisableAttackNPCs(checked))
 				.appendTo(this);
 
 			new Button()
@@ -91,6 +105,14 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 
 		private toggleFreezeNPCs(freezed: boolean) {
 			ToggleNPCsFrozen.execute(localPlayer, freezed);
+		}
+
+		private toggleDisableAttackCreatures(disable: boolean) {
+			ToggleCreaturesDisableAttack.execute(localPlayer, disable);
+		}
+
+		private toggleDisableAttackNPCs(disable: boolean) {
+			ToggleNPCsDisableAttack.execute(localPlayer, disable);
 		}
 
 		@Bound

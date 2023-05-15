@@ -9,6 +9,7 @@ import { InterModRegistration } from "mod/InterModRegistry";
 import Mod from "mod/Mod";
 import Actions from "./action/IAction";
 import { ISaveData } from "./IBalancingTools";
+import Human from "game/entity/Human";
 export default class BalancingTools extends Mod {
     static readonly INSTANCE: BalancingTools;
     readonly DEBUG_TOOLS: DebugTools;
@@ -19,9 +20,13 @@ export default class BalancingTools extends Mod {
     actions: Actions;
     readonly actionToggleCreaturesFrozen: ActionType;
     readonly actionToggleNPCsFrozen: ActionType;
+    readonly actionToggleCreaturesDisableAttack: ActionType;
+    readonly actionToggleNPCsDisableAttack: ActionType;
     readonly actionSetEquipment: ActionType;
     readonly actionSetSkills: ActionType;
     readonly actionSpawnCreatureLine: ActionType;
     canCreatureMove(creature: Creature, tile: Tile, moveType: MoveType): boolean | undefined;
+    canAttack(enemy: Human | Creature): boolean | undefined;
     canNPCMove(npc: NPC, tile: Tile, moveType: MoveType): boolean | undefined;
+    canNPCAttack(): boolean | undefined;
 }

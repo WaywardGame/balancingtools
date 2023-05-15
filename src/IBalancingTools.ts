@@ -11,11 +11,15 @@ export enum BalancingToolsTranslation {
 	SetSkills,
 	SpawnCreatureLine,
 	FreezeNPCs,
+	DisableAttackCreatures,
+	DisableAttackNPCs,
 }
 
 export interface ISaveData {
 	freezeCreatures?: boolean;
 	freezeNPCs?: boolean;
+	disableAttackCreatures?: boolean;
+	disableAttackNPCs?: boolean;
 }
 
 export enum EquipmentSet {

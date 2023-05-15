@@ -8,11 +8,15 @@ export declare enum BalancingToolsTranslation {
     SetEquipment = 3,
     SetSkills = 4,
     SpawnCreatureLine = 5,
-    FreezeNPCs = 6
+    FreezeNPCs = 6,
+    DisableAttackCreatures = 7,
+    DisableAttackNPCs = 8
 }
 export interface ISaveData {
     freezeCreatures?: boolean;
     freezeNPCs?: boolean;
+    disableAttackCreatures?: boolean;
+    disableAttackNPCs?: boolean;
 }
 export declare enum EquipmentSet {
     Bark = 0,

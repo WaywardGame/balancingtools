@@ -14,9 +14,12 @@ import SetEquipment from "./action/SetEquipment";
 import SetSkills from "./action/SetSkills";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
 import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
+import ToggleCreaturesDisableAttack from "./action/ToggleCreaturesDisableAttack";
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
+import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
 import BalancingToolsPanel from "./BalancingToolsPanel";
 import { BalancingToolsTranslation, BALANCING_TOOLS_ID, EquipmentSet, ISaveData } from "./IBalancingTools";
+import Human from "game/entity/Human";
 
 export default class BalancingTools extends Mod {
 
@@ -50,6 +53,12 @@ export default class BalancingTools extends Mod {
 	@Register.action("ToggleNPCsFrozen", ToggleNPCsFrozen)
 	public readonly actionToggleNPCsFrozen: ActionType;
 
+	@Register.action("ToggleCreaturesDisableAttack", ToggleCreaturesDisableAttack)
+	public readonly actionToggleCreaturesDisableAttack: ActionType;
+
+	@Register.action("ToggleNPCsDisableAttack", ToggleNPCsDisableAttack)
+	public readonly actionToggleNPCsDisableAttack: ActionType;
+
 	@Register.action("SetEquipment", SetEquipment)
 	public readonly actionSetEquipment: ActionType;
 
@@ -75,12 +84,30 @@ export default class BalancingTools extends Mod {
 		return undefined;
 	}
 
+	@EventHandler(Creature, "canAttack")
+	public canAttack(enemy: Human | Creature): boolean | undefined {
+		if (this.saveData.disableAttackCreatures) {
+			return false;
+		}
+
+		return undefined;
+	}
+
 	/**
-	 * Disables NPC movement
+	 * Disables NPC movement and creature attacks
 	 */
 	@EventHandler(NPC, "canNPCMove")
 	public canNPCMove(npc: NPC, tile: Tile, moveType: MoveType): boolean | undefined {
 		if (this.saveData.freezeNPCs) {
+			return false;
+		}
+
+		return undefined;
+	}
+
+	@EventHandler(NPC, "canNPCAttack")
+	public canNPCAttack(): boolean | undefined {
+		if (this.saveData.disableAttackNPCs) {
 			return false;
 		}
 

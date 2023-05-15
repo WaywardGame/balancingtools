@@ -8,7 +8,9 @@
 			"equipmentQuality": "Equipment Quality",
 			"setEquipment": "Set Equipment",
 			"setSkills": "Set Skills",
-			"spawnCreatureLine": "Spawn Creature Line"
+			"spawnCreatureLine": "Spawn Creature Line",
+			"disableAttackCreatures": "Disable Creature Attacks",
+			"disableAttackNPCs": "Disable NPC Attacks"
 		},
 		"modBalancingToolsEquipment": {
 			"bark": "Bark",
