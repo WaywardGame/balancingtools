@@ -5,18 +5,6 @@
         "outDir": "./out",
         "rootDir": "./src",
         "paths": {
-            ///////////////////////////
-            // paths from @wayward/types/tsconfig.mod.base.json
-            "*": [
-                "node_modules/@wayward/types/definitions/game/*"
-            ],
-            "@cplusplus/*": [
-                "node_modules/@wayward/types/definitions/cplusplus/*"
-            ],
-            "@hosts/*": [
-                "node_modules/@wayward/types/definitions/hosts/*"
-            ],
-            // required when using classic module resolution
             "@wayward/goodstream": [
                 "node_modules/@wayward/goodstream/Stream",
                 "node_modules/@wayward/types/node_modules/@wayward/goodstream/Stream"
@@ -25,7 +13,9 @@
                 "node_modules/@wayward/goodstream/*",
                 "node_modules/@wayward/types/node_modules/@wayward/goodstream/*"
             ],
-            ///////////////////////////            
+            "@wayward/*": [
+                "node_modules/@wayward/types/definitions/*"
+            ],
             "@wayward/debugtools": [
                 "node_modules/@wayward/debugtools/out/DebugTools"
             ]
@@ -33,5 +23,13 @@
     },
     "include": [
         "src/**/*"
+    ],
+    "references": [
+        {
+            "path": "../debugtools/tsconfig.json"
+        },
+        {
+            "path": "../../../src/game/tsconfig.json"
+        }
     ]
 }

@@ -9,9 +9,9 @@
  * https://github.com/WaywardGame/types/wiki
  */
 
-import { ActionUsability } from "game/entity/action/IAction";
-import Mod from "mod/Mod";
-import Log from "utilities/Log";
+import { ActionUsability } from "@wayward/game/game/entity/action/IAction";
+import Mod from "@wayward/game/mod/Mod";
+import Log from "@wayward/utilities/Log";
 import DebugTools from "@wayward/debugtools";
 import BalancingTools from "../BalancingTools";
 import { BALANCING_TOOLS_ID } from "../IBalancingTools";

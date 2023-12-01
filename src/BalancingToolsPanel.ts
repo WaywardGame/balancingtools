@@ -9,33 +9,34 @@
  * https://github.com/WaywardGame/types/wiki
  */
 
-import { SkillType } from "game/entity/IHuman";
-import UiTranslation from "language/dictionary/UiTranslation";
-import Translation from "language/Translation";
-import Button from "ui/component/Button";
-import { CheckButton } from "ui/component/CheckButton";
-import ContextMenu from "ui/component/ContextMenu";
-import { RangeRow } from "ui/component/RangeRow";
-import Dropdown from "ui/component/Dropdown";
-import InputManager from "ui/input/InputManager";
-import { Tuple } from "utilities/collection/Tuple";
-import { Bound } from "utilities/Decorators";
-import { DebugToolsPanel, DebugToolsDialogPanelClass } from "@wayward/debugtools";
+import { DebugToolsDialogPanelClass, DebugToolsPanel } from "@wayward/debugtools";
+import { Quality } from "@wayward/game/game/IObject";
+import { SkillType } from "@wayward/game/game/entity/IHuman";
+import Dictionary from "@wayward/game/language/Dictionary";
+import Translation from "@wayward/game/language/Translation";
+import UiTranslation from "@wayward/game/language/dictionary/UiTranslation";
+import Button from "@wayward/game/ui/component/Button";
+import { CheckButton } from "@wayward/game/ui/component/CheckButton";
+import ContextMenu from "@wayward/game/ui/component/ContextMenu";
+import Dropdown from "@wayward/game/ui/component/Dropdown";
+import { LabelledRow } from "@wayward/game/ui/component/LabelledRow";
+import { RangeRow } from "@wayward/game/ui/component/RangeRow";
+import InputManager from "@wayward/game/ui/input/InputManager";
+import Enums from "@wayward/game/utilities/enum/Enums";
+import { Bound } from "@wayward/utilities/Decorators";
+import { Tuple } from "@wayward/utilities/collection/Tuple";
+import BalancingTools from "./BalancingTools";
+import { BalancingToolsTranslation, EquipmentSet, equipmentSets } from "./IBalancingTools";
 import SetEquipment from "./action/SetEquipment";
 import SetSkills from "./action/SetSkills";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
-import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
-import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
-import BalancingTools from "./BalancingTools";
-import { BalancingToolsTranslation, EquipmentSet, equipmentSets } from "./IBalancingTools";
-import { LabelledRow } from "ui/component/LabelledRow";
-import { Quality } from "game/IObject";
-import Dictionary from "language/Dictionary";
-import Enums from "utilities/enum/Enums";
 import ToggleCreaturesDisableAttack from "./action/ToggleCreaturesDisableAttack";
+import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
 import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
+import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
+import TranslationImpl from "@wayward/game/language/impl/TranslationImpl";
 
-function translation(entry: BalancingToolsTranslation) {
+function translation(entry: BalancingToolsTranslation): TranslationImpl {
 	return Translation.get(BalancingTools.INSTANCE.dictionary, entry);
 }
 
@@ -106,28 +107,28 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 				.appendTo(this);
 		}
 
-		public override getTranslation() {
+		public override getTranslation(): TranslationImpl {
 			return translation(BalancingToolsTranslation.PanelName);
 		}
 
-		private toggleFreezeCreatures(freezed: boolean) {
+		private toggleFreezeCreatures(freezed: boolean): void {
 			ToggleCreaturesFrozen.execute(localPlayer, freezed);
 		}
 
-		private toggleFreezeNPCs(freezed: boolean) {
+		private toggleFreezeNPCs(freezed: boolean): void {
 			ToggleNPCsFrozen.execute(localPlayer, freezed);
 		}
 
-		private toggleDisableAttackCreatures(disable: boolean) {
+		private toggleDisableAttackCreatures(disable: boolean): void {
 			ToggleCreaturesDisableAttack.execute(localPlayer, disable);
 		}
 
-		private toggleDisableAttackNPCs(disable: boolean) {
+		private toggleDisableAttackNPCs(disable: boolean): void {
 			ToggleNPCsDisableAttack.execute(localPlayer, disable);
 		}
 
 		@Bound
-		private showEquipmentContextMenu() {
+		private showEquipmentContextMenu(): void {
 			const screen = ui.screens.getTop();
 			if (!screen) {
 				return;
@@ -138,24 +139,24 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 			new ContextMenu(...equipmentSets.keys()
 				.map(equipment => Tuple(EquipmentSet[equipment], {
 					translation: Translation.get(BalancingTools.INSTANCE.dictionaryEquipment, equipment),
-					onActivate: () => this.setEquipment(equipment, this.dropdownItemQuality.selection),
+					onActivate: () => this.setEquipment(equipment, this.dropdownItemQuality.selectedOption),
 				})))
 				.addAllDescribedOptions()
 				.setPosition(...mouse.xy)
 				.schedule(screen.setContextMenu);
 		}
 
-		private setEquipment(equipment: EquipmentSet, selection: Quality) {
+		private setEquipment(equipment: EquipmentSet, selection: Quality): void {
 			SetEquipment.execute(localPlayer, equipment, selection);
 		}
 
 		@Bound
-		private setSkills(_: any, value: number) {
+		private setSkills(_: any, value: number): void {
 			SetSkills.execute(localPlayer, value);
 		}
 
 		@Bound
-		private spawnCreatureLine() {
+		private spawnCreatureLine(): void {
 			SpawnCreatureLine.execute(localPlayer);
 		}
 	}

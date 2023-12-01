@@ -9,17 +9,17 @@
  * https://github.com/WaywardGame/types/wiki
  */
 import DebugTools, { ModRegistrationMainDialogPanel } from "@wayward/debugtools";
-import { ActionType } from "game/entity/action/IAction";
-import Creature from "game/entity/creature/Creature";
-import { MoveType } from "game/entity/IEntity";
-import NPC from "game/entity/npc/NPC";
-import Tile from "game/tile/Tile";
-import Dictionary from "language/Dictionary";
-import { InterModRegistration } from "mod/InterModRegistry";
-import Mod from "mod/Mod";
+import { ActionType } from "@wayward/game/game/entity/action/IAction";
+import Creature from "@wayward/game/game/entity/creature/Creature";
+import { MoveType } from "@wayward/game/game/entity/IEntity";
+import NPC from "@wayward/game/game/entity/npc/NPC";
+import Tile from "@wayward/game/game/tile/Tile";
+import Dictionary from "@wayward/game/language/Dictionary";
+import { InterModRegistration } from "@wayward/game/mod/InterModRegistry";
+import Mod from "@wayward/game/mod/Mod";
 import Actions from "./action/IAction";
 import { ISaveData } from "./IBalancingTools";
-import Human from "game/entity/Human";
+import Human from "@wayward/game/game/entity/Human";
 export default class BalancingTools extends Mod {
     static readonly INSTANCE: BalancingTools;
     readonly DEBUG_TOOLS: DebugTools;

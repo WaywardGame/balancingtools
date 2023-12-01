@@ -9,13 +9,13 @@
  * https://github.com/WaywardGame/types/wiki
  */
 
-import { Action } from "game/entity/action/Action";
-import { CreatureType } from "game/entity/creature/ICreature";
-import { EntityType } from "game/entity/IEntity";
-import { TerrainType } from "game/tile/ITerrain";
-import Enums from "utilities/enum/Enums";
-import { creatureDescriptions } from "game/entity/creature/Creatures";
-import { DoodadType } from "game/doodad/IDoodad";
+import { Action } from "@wayward/game/game/entity/action/Action";
+import { CreatureType } from "@wayward/game/game/entity/creature/ICreature";
+import { EntityType } from "@wayward/game/game/entity/IEntity";
+import { TerrainType } from "@wayward/game/game/tile/ITerrain";
+import Enums from "@wayward/game/utilities/enum/Enums";
+import { creatureDescriptions } from "@wayward/game/game/entity/creature/Creatures";
+import { DoodadType } from "@wayward/game/game/doodad/IDoodad";
 
 export default new Action()
 	.setUsableBy(EntityType.Human)
@@ -25,13 +25,13 @@ export default new Action()
 		const biomeType = executor.island.biomeType;
 
 		// Spawn creatures in a line in order of spawning rep for the current biome type.
-		// if they don't have a spawnsOnReputation, order if they can spawn in the biome.
+		// if they don't have a spawnsOnAlignment, order if they can spawn in the biome.
 		// everyone else goes at the end of the line.
 		const creatureTypes = Array.from(Enums.values(CreatureType))
 			.sort((creatureA, creatureB) => {
-				const creatureASort = creatureDescriptions[creatureA]?.spawn?.[biomeType]?.spawnsOnReputation ??
+				const creatureASort = creatureDescriptions[creatureA]?.spawn?.[biomeType]?.spawnsOnAlignment ??
 					(creatureDescriptions[creatureA]?.spawnGroup?.[biomeType] ? -99998 : -99999);
-				const creatureBSort = creatureDescriptions[creatureB]?.spawn?.[biomeType]?.spawnsOnReputation ??
+				const creatureBSort = creatureDescriptions[creatureB]?.spawn?.[biomeType]?.spawnsOnAlignment ??
 					(creatureDescriptions[creatureB]?.spawnGroup?.[biomeType] ? -99998 : -99999);
 				return creatureBSort - creatureASort;
 			});
@@ -46,8 +46,8 @@ export default new Action()
 
 			let createFence = false;
 
-			// add some fences to separate the categories: [ spawnsOnReputation | spawnGroup | others ]
-			if (creatureDescriptions[creatureType]?.spawn?.[biomeType]?.spawnsOnReputation === undefined) {
+			// add some fences to separate the categories: [ spawnsOnAlignment | spawnGroup | others ]
+			if (creatureDescriptions[creatureType]?.spawn?.[biomeType]?.spawnsOnAlignment === undefined) {
 				if (!addedSpawnsOnRepFence) {
 					addedSpawnsOnRepFence = true;
 					createFence = true;

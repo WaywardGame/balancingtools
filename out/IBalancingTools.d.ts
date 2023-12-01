@@ -8,8 +8,8 @@
  * Wayward is a copyrighted and licensed work. Modification and/or distribution of any source files is prohibited. If you wish to modify the game in any way, please refer to the modding guide:
  * https://github.com/WaywardGame/types/wiki
  */
-import { EquipType } from "game/entity/IHuman";
-import { ItemType } from "game/item/IItem";
+import { EquipType } from "@wayward/game/game/entity/IHuman";
+import { ItemType } from "@wayward/game/game/item/IItem";
 export declare const BALANCING_TOOLS_ID = "Balancing Tools";
 export declare enum BalancingToolsTranslation {
     PanelName = 0,

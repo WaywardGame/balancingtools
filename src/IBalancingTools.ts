@@ -9,8 +9,8 @@
  * https://github.com/WaywardGame/types/wiki
  */
 
-import { EquipType } from "game/entity/IHuman";
-import { ItemType } from "game/item/IItem";
+import { EquipType } from "@wayward/game/game/entity/IHuman";
+import { ItemType } from "@wayward/game/game/item/IItem";
 
 export const BALANCING_TOOLS_ID = "Balancing Tools";
 

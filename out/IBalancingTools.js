@@ -8,7 +8,7 @@
  * Wayward is a copyrighted and licensed work. Modification and/or distribution of any source files is prohibited. If you wish to modify the game in any way, please refer to the modding guide:
  * https://github.com/WaywardGame/types/wiki
  */
-define(["require", "exports", "game/entity/IHuman", "game/item/IItem"], function (require, exports, IHuman_1, IItem_1) {
+define(["require", "exports", "@wayward/game/game/entity/IHuman", "@wayward/game/game/item/IItem"], function (require, exports, IHuman_1, IItem_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.equipmentSets = exports.EquipmentSet = exports.BalancingToolsTranslation = exports.BALANCING_TOOLS_ID = void 0;
