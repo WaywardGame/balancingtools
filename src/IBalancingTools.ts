@@ -149,7 +149,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.TinShield,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.TinSword,
+				itemType: ItemType.TinShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.TinCuirass,
@@ -251,7 +251,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.CopperBuckler,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.CopperSword,
+				itemType: ItemType.CopperShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.CopperCuirass,
@@ -353,7 +353,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.WroughtIronShield,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.WroughtIronSword,
+				itemType: ItemType.WroughtIronShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.WroughtIronBreastplate,
@@ -404,7 +404,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.IronHeater,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.IronSword,
+				itemType: ItemType.IronShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.IronBreastplate,
@@ -455,7 +455,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.BronzeKiteShield,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.BronzeSword,
+				itemType: ItemType.BronzeShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.BronzeChestArmor,
