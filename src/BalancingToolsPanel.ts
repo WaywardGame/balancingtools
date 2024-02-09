@@ -15,6 +15,7 @@ import { SkillType } from "@wayward/game/game/entity/IHuman";
 import Dictionary from "@wayward/game/language/Dictionary";
 import Translation from "@wayward/game/language/Translation";
 import UiTranslation from "@wayward/game/language/dictionary/UiTranslation";
+import TranslationImpl from "@wayward/game/language/impl/TranslationImpl";
 import Button from "@wayward/game/ui/component/Button";
 import { CheckButton } from "@wayward/game/ui/component/CheckButton";
 import ContextMenu from "@wayward/game/ui/component/ContextMenu";
@@ -34,13 +35,10 @@ import ToggleCreaturesDisableAttack from "./action/ToggleCreaturesDisableAttack"
 import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
 import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
-import TranslationImpl from "@wayward/game/language/impl/TranslationImpl";
 
 function translation(entry: BalancingToolsTranslation): TranslationImpl {
 	return Translation.get(BalancingTools.INSTANCE.dictionary, entry);
 }
-
-// tslint:disable variable-name
 
 const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPanel) {
 	class BalancingToolsPanelClass extends DebugToolsPanelClass {
