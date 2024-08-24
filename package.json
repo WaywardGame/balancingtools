@@ -1,0 +1,20 @@
+{
+	"name": "@wayward/balancingtools",
+	"private": true,
+	"version": "1.0.0",
+	"main": "out/BalancingTools.js",
+	"types": "out/BalancingTools.d.ts",
+	"scripts": {
+		"clean": "npx rimraf ./out ./tsconfig.*tsbuildinfo",
+		"build": "npx tsc --build --pretty",
+		"watch": "npx tsc --build --watch --pretty --preserveWatchOutput"
+	},
+	"dependencies": {
+		"@wayward/debugtools": "git://github.com/WaywardGame/debugtools.git#development"
+	},
+	"devDependencies": {
+		"@wayward/types": "^2.14.0-beta.dev.20240824.3",
+		"rimraf": "3.0.2",
+		"typescript": "^5.6.1-rc"
+	}
+}

@@ -23,13 +23,5 @@
     },
     "include": [
         "src/**/*"
-    ],
-    "references": [
-        {
-            "path": "../debugtools/tsconfig.json"
-        },
-        {
-            "path": "../../../src/game/tsconfig.json"
-        }
     ]
 }
