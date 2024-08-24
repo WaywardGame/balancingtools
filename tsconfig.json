@@ -17,7 +17,7 @@
                 "node_modules/@wayward/types/definitions/*"
             ],
             "@wayward/debugtools": [
-                "node_modules/@wayward/debugtools/out/DebugTools"
+                "node_modules/@wayward/debugtools/src/DebugTools"
             ]
         }
     },
