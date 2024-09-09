@@ -25,7 +25,7 @@ export default new Action()
 
 		const tiers = Object.entries(biomeDescriptions[biomeType]?.zones?.tiers ?? {})
 			.filter(Tuple.filterNullish(1))
-			.map(([name, tier]) => Tuple(name, Object.values(tier)
+			.map(([name, tier]) => Tuple(name, tier.values().toArray()
 				.flat()
 				.flatMap(group => Object.values(group))
 				.flat(2)))
