@@ -1,5 +1,5 @@
 import { biomeDescriptions } from "@wayward/game/game/biome/Biomes";
-import { BiomeType } from "@wayward/game/game/biome/IBiome";
+import type { BiomeType } from "@wayward/game/game/biome/IBiome";
 import { Action } from "@wayward/game/game/entity/action/Action";
 import { CreatureType } from "@wayward/game/game/entity/creature/ICreature";
 import { EntityType } from "@wayward/game/game/entity/IEntity";
@@ -23,7 +23,7 @@ export default new Action()
 
 		const biomeType = executor.island.biomeType;
 
-		const tiers = Object.entries(biomeDescriptions[biomeType]?.zones?.tiers ?? {})
+		const tiers = Object.entries(biomeDescriptions[biomeType]?.zones?.creatures ?? {})
 			.filter(Tuple.filterNullish(1))
 			.map(([name, tier]) => Tuple(name, tier.values().toArray()
 				.flat()
@@ -46,7 +46,7 @@ export default new Action()
 			let y = executor.y + yOffset;
 
 			function spawnAshLine() {
-				for (var i = -2; i <= 3; i++) {
+				for (let i = -2; i <= 3; i++) {
 					const tile = executor.island.getTileSafe(x + i, y, executor.z);
 					if (!tile) {
 						break;
@@ -96,7 +96,7 @@ export default new Action()
 				}
 			}
 
-			for (var i = -2; i <= 3; i++) {
+			for (let i = -2; i <= 3; i++) {
 				const tile = executor.island.getTileSafe(x + i, y, executor.z);
 				if (!tile) {
 					break;
