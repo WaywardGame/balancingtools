@@ -1,10 +1,10 @@
-import { DebugToolsDialogPanelClass, DebugToolsPanel } from "@wayward/debugtools";
+import type { DebugToolsDialogPanelClass, DebugToolsPanel } from "@wayward/debugtools";
 import { Quality } from "@wayward/game/game/IObject";
 import { SkillType } from "@wayward/game/game/entity/IHuman";
 import Dictionary from "@wayward/game/language/Dictionary";
 import Translation from "@wayward/game/language/Translation";
 import UiTranslation from "@wayward/game/language/dictionary/UiTranslation";
-import TranslationImpl from "@wayward/game/language/impl/TranslationImpl";
+import type TranslationImpl from "@wayward/game/language/impl/TranslationImpl";
 import Button from "@wayward/game/ui/component/Button";
 import { CheckButton } from "@wayward/game/ui/component/CheckButton";
 import ContextMenu from "@wayward/game/ui/component/ContextMenu";
@@ -29,6 +29,7 @@ function translation(entry: BalancingToolsTranslation): TranslationImpl {
 	return Translation.get(BalancingTools.INSTANCE.dictionary, entry);
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPanel) {
 	class BalancingToolsPanelClass extends DebugToolsPanelClass {
 
@@ -99,19 +100,19 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 		}
 
 		private toggleFreezeCreatures(freezed: boolean): void {
-			ToggleCreaturesFrozen.execute(localPlayer, freezed);
+			void ToggleCreaturesFrozen.execute(localPlayer, freezed);
 		}
 
 		private toggleFreezeNPCs(freezed: boolean): void {
-			ToggleNPCsFrozen.execute(localPlayer, freezed);
+			void ToggleNPCsFrozen.execute(localPlayer, freezed);
 		}
 
 		private toggleDisableAttackCreatures(disable: boolean): void {
-			ToggleCreaturesDisableAttack.execute(localPlayer, disable);
+			void ToggleCreaturesDisableAttack.execute(localPlayer, disable);
 		}
 
 		private toggleDisableAttackNPCs(disable: boolean): void {
-			ToggleNPCsDisableAttack.execute(localPlayer, disable);
+			void ToggleNPCsDisableAttack.execute(localPlayer, disable);
 		}
 
 		@Bound
@@ -134,17 +135,17 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 		}
 
 		private setEquipment(equipment: EquipmentSet, selection: Quality): void {
-			SetEquipment.execute(localPlayer, equipment, selection);
+			void SetEquipment.execute(localPlayer, equipment, selection);
 		}
 
 		@Bound
 		private setSkills(_: any, value: number): void {
-			SetSkills.execute(localPlayer, value);
+			void SetSkills.execute(localPlayer, value);
 		}
 
 		@Bound
 		private spawnCreatureLine(): void {
-			SpawnCreatureLine.execute(localPlayer);
+			void SpawnCreatureLine.execute(localPlayer);
 		}
 	}
 

@@ -1,12 +1,13 @@
-import DebugTools, { ModRegistrationMainDialogPanel } from "@wayward/debugtools";
+import type { ModRegistrationMainDialogPanel } from "@wayward/debugtools";
+import type DebugTools from "@wayward/debugtools";
 import { EventHandler } from "@wayward/game/event/EventManager";
-import { ActionType } from "@wayward/game/game/entity/action/IAction";
+import type { ActionType } from "@wayward/game/game/entity/action/IAction";
 import Creature from "@wayward/game/game/entity/creature/Creature";
-import { MoveType } from "@wayward/game/game/entity/IEntity";
+import type { MoveType } from "@wayward/game/game/entity/IEntity";
 import NPC from "@wayward/game/game/entity/npc/NPC";
-import Tile from "@wayward/game/game/tile/Tile";
-import Dictionary from "@wayward/game/language/Dictionary";
-import { InterModRegistration } from "@wayward/game/mod/InterModRegistry";
+import type Tile from "@wayward/game/game/tile/Tile";
+import type Dictionary from "@wayward/game/language/Dictionary";
+import type { InterModRegistration } from "@wayward/game/mod/InterModRegistry";
 import Mod from "@wayward/game/mod/Mod";
 import Register from "@wayward/game/mod/ModRegistry";
 import Actions from "./action/IAction";
@@ -18,8 +19,9 @@ import ToggleCreaturesDisableAttack from "./action/ToggleCreaturesDisableAttack"
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
 import BalancingToolsPanel from "./BalancingToolsPanel";
-import { BalancingToolsTranslation, BALANCING_TOOLS_ID, EquipmentSet, ISaveData } from "./IBalancingTools";
-import Human from "@wayward/game/game/entity/Human";
+import type { ISaveData } from "./IBalancingTools";
+import { BalancingToolsTranslation, BALANCING_TOOLS_ID, EquipmentSet } from "./IBalancingTools";
+import type Human from "@wayward/game/game/entity/Human";
 
 export default class BalancingTools extends Mod {
 

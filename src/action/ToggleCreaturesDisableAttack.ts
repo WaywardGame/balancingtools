@@ -1,14 +1,14 @@
 import { Action } from "@wayward/game/game/entity/action/Action";
-import { ActionArgument } from "@wayward/game/game/entity/action/IAction";
+import { ActionArgument, ActionUsability } from "@wayward/game/game/entity/action/IAction";
 import { EntityType } from "@wayward/game/game/entity/IEntity";
-import Actions, { defaultUsability } from "../action/IAction";
+import Actions from "../action/IAction";
 
 /**
  * Sets whether creatures have attacks disabled
  */
 export default new Action(ActionArgument.Boolean)
 	.setUsableBy(EntityType.Human)
-	.setUsableWhen(...defaultUsability)
+	.setUsableWhen(ActionUsability.Always)
 	.setHandler((action, disable) => {
 		Actions.BALANCING_TOOLS.saveData.disableAttackCreatures = disable;
 	});

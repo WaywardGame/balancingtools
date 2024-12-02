@@ -1,13 +1,13 @@
 import { Action } from "@wayward/game/game/entity/action/Action";
-import { ActionArgument } from "@wayward/game/game/entity/action/IAction";
+import { ActionArgument, ActionUsability } from "@wayward/game/game/entity/action/IAction";
 import { EntityType } from "@wayward/game/game/entity/IEntity";
-import { Quality } from "@wayward/game/game/IObject";
-import { EquipmentSet, equipmentSets } from "../IBalancingTools";
-import { defaultUsability } from "./IAction";
+import type { Quality } from "@wayward/game/game/IObject";
+import type { EquipmentSet } from "../IBalancingTools";
+import { equipmentSets } from "../IBalancingTools";
 
 export default new Action(ActionArgument.Integer32, ActionArgument.Integer32)
 	.setUsableBy(EntityType.Human)
-	.setUsableWhen(...defaultUsability)
+	.setUsableWhen(ActionUsability.Always)
 	.setHandler((action, equipment: EquipmentSet, quality: Quality) => {
 		const executor = action.executor;
 
