@@ -1,46 +1,35 @@
-/*!
- * Copyright 2011-2023 Unlok
- * https://www.unlok.ca
- *
- * Credits & Thanks:
- * https://www.unlok.ca/credits-thanks/
- *
- * Wayward is a copyrighted and licensed work. Modification and/or distribution of any source files is prohibited. If you wish to modify the game in any way, please refer to the modding guide:
- * https://github.com/WaywardGame/types/wiki
- */
-
-import { SkillType } from "game/entity/IHuman";
-import UiTranslation from "language/dictionary/UiTranslation";
-import Translation from "language/Translation";
-import Button from "ui/component/Button";
-import { CheckButton } from "ui/component/CheckButton";
-import ContextMenu from "ui/component/ContextMenu";
-import { RangeRow } from "ui/component/RangeRow";
-import Dropdown from "ui/component/Dropdown";
-import InputManager from "ui/input/InputManager";
-import { Tuple } from "utilities/collection/Tuple";
-import { Bound } from "utilities/Decorators";
-import { DebugToolsPanel, DebugToolsDialogPanelClass } from "@wayward/debugtools";
+import type { DebugToolsDialogPanelClass, DebugToolsPanel } from "@wayward/debugtools";
+import { Quality } from "@wayward/game/game/IObject";
+import { SkillType } from "@wayward/game/game/entity/IHuman";
+import Dictionary from "@wayward/game/language/Dictionary";
+import Translation from "@wayward/game/language/Translation";
+import UiTranslation from "@wayward/game/language/dictionary/UiTranslation";
+import type TranslationImpl from "@wayward/game/language/impl/TranslationImpl";
+import Button from "@wayward/game/ui/component/Button";
+import { CheckButton } from "@wayward/game/ui/component/CheckButton";
+import ContextMenu from "@wayward/game/ui/component/ContextMenu";
+import Dropdown from "@wayward/game/ui/component/Dropdown";
+import { LabelledRow } from "@wayward/game/ui/component/LabelledRow";
+import { RangeRow } from "@wayward/game/ui/component/RangeRow";
+import InputManager from "@wayward/game/ui/input/InputManager";
+import Enums from "@wayward/game/utilities/enum/Enums";
+import { Bound } from "@wayward/utilities/Decorators";
+import { Tuple } from "@wayward/utilities/collection/Tuple";
+import BalancingTools from "./BalancingTools";
+import { BalancingToolsTranslation, EquipmentSet, equipmentSets } from "./IBalancingTools";
 import SetEquipment from "./action/SetEquipment";
 import SetSkills from "./action/SetSkills";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
-import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
-import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
-import BalancingTools from "./BalancingTools";
-import { BalancingToolsTranslation, EquipmentSet, equipmentSets } from "./IBalancingTools";
-import { LabelledRow } from "ui/component/LabelledRow";
-import { Quality } from "game/IObject";
-import Dictionary from "language/Dictionary";
-import Enums from "utilities/enum/Enums";
 import ToggleCreaturesDisableAttack from "./action/ToggleCreaturesDisableAttack";
+import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
 import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
+import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 
-function translation(entry: BalancingToolsTranslation) {
+function translation(entry: BalancingToolsTranslation): TranslationImpl {
 	return Translation.get(BalancingTools.INSTANCE.dictionary, entry);
 }
 
-// tslint:disable variable-name
-
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPanel) {
 	class BalancingToolsPanelClass extends DebugToolsPanelClass {
 
@@ -106,28 +95,28 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 				.appendTo(this);
 		}
 
-		public override getTranslation() {
+		public override getTranslation(): TranslationImpl {
 			return translation(BalancingToolsTranslation.PanelName);
 		}
 
-		private toggleFreezeCreatures(freezed: boolean) {
-			ToggleCreaturesFrozen.execute(localPlayer, freezed);
+		private toggleFreezeCreatures(freezed: boolean): void {
+			void ToggleCreaturesFrozen.execute(localPlayer, freezed);
 		}
 
-		private toggleFreezeNPCs(freezed: boolean) {
-			ToggleNPCsFrozen.execute(localPlayer, freezed);
+		private toggleFreezeNPCs(freezed: boolean): void {
+			void ToggleNPCsFrozen.execute(localPlayer, freezed);
 		}
 
-		private toggleDisableAttackCreatures(disable: boolean) {
-			ToggleCreaturesDisableAttack.execute(localPlayer, disable);
+		private toggleDisableAttackCreatures(disable: boolean): void {
+			void ToggleCreaturesDisableAttack.execute(localPlayer, disable);
 		}
 
-		private toggleDisableAttackNPCs(disable: boolean) {
-			ToggleNPCsDisableAttack.execute(localPlayer, disable);
+		private toggleDisableAttackNPCs(disable: boolean): void {
+			void ToggleNPCsDisableAttack.execute(localPlayer, disable);
 		}
 
 		@Bound
-		private showEquipmentContextMenu() {
+		private showEquipmentContextMenu(): void {
 			const screen = ui.screens.getTop();
 			if (!screen) {
 				return;
@@ -138,25 +127,25 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 			new ContextMenu(...equipmentSets.keys()
 				.map(equipment => Tuple(EquipmentSet[equipment], {
 					translation: Translation.get(BalancingTools.INSTANCE.dictionaryEquipment, equipment),
-					onActivate: () => this.setEquipment(equipment, this.dropdownItemQuality.selection),
+					onActivate: () => this.setEquipment(equipment, this.dropdownItemQuality.selectedOption),
 				})))
 				.addAllDescribedOptions()
 				.setPosition(...mouse.xy)
 				.schedule(screen.setContextMenu);
 		}
 
-		private setEquipment(equipment: EquipmentSet, selection: Quality) {
-			SetEquipment.execute(localPlayer, equipment, selection);
+		private setEquipment(equipment: EquipmentSet, selection: Quality): void {
+			void SetEquipment.execute(localPlayer, equipment, selection);
 		}
 
 		@Bound
-		private setSkills(_: any, value: number) {
-			SetSkills.execute(localPlayer, value);
+		private setSkills(_: any, value: number): void {
+			void SetSkills.execute(localPlayer, value);
 		}
 
 		@Bound
-		private spawnCreatureLine() {
-			SpawnCreatureLine.execute(localPlayer);
+		private spawnCreatureLine(): void {
+			void SpawnCreatureLine.execute(localPlayer);
 		}
 	}
 

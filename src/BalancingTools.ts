@@ -1,25 +1,15 @@
-/*!
- * Copyright 2011-2023 Unlok
- * https://www.unlok.ca
- *
- * Credits & Thanks:
- * https://www.unlok.ca/credits-thanks/
- *
- * Wayward is a copyrighted and licensed work. Modification and/or distribution of any source files is prohibited. If you wish to modify the game in any way, please refer to the modding guide:
- * https://github.com/WaywardGame/types/wiki
- */
-
-import DebugTools, { ModRegistrationMainDialogPanel } from "@wayward/debugtools";
-import { EventHandler } from "event/EventManager";
-import { ActionType } from "game/entity/action/IAction";
-import Creature from "game/entity/creature/Creature";
-import { MoveType } from "game/entity/IEntity";
-import NPC from "game/entity/npc/NPC";
-import Tile from "game/tile/Tile";
-import Dictionary from "language/Dictionary";
-import { InterModRegistration } from "mod/InterModRegistry";
-import Mod from "mod/Mod";
-import Register from "mod/ModRegistry";
+import type { ModRegistrationMainDialogPanel } from "@wayward/debugtools";
+import type DebugTools from "@wayward/debugtools";
+import { EventHandler } from "@wayward/game/event/EventManager";
+import type { ActionType } from "@wayward/game/game/entity/action/IAction";
+import Creature from "@wayward/game/game/entity/creature/Creature";
+import type { MoveType } from "@wayward/game/game/entity/IEntity";
+import NPC from "@wayward/game/game/entity/npc/NPC";
+import type Tile from "@wayward/game/game/tile/Tile";
+import type Dictionary from "@wayward/game/language/Dictionary";
+import type { InterModRegistration } from "@wayward/game/mod/InterModRegistry";
+import Mod from "@wayward/game/mod/Mod";
+import Register from "@wayward/game/mod/ModRegistry";
 import Actions from "./action/IAction";
 import SetEquipment from "./action/SetEquipment";
 import SetSkills from "./action/SetSkills";
@@ -29,8 +19,9 @@ import ToggleCreaturesDisableAttack from "./action/ToggleCreaturesDisableAttack"
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
 import BalancingToolsPanel from "./BalancingToolsPanel";
-import { BalancingToolsTranslation, BALANCING_TOOLS_ID, EquipmentSet, ISaveData } from "./IBalancingTools";
-import Human from "game/entity/Human";
+import type { ISaveData } from "./IBalancingTools";
+import { BalancingToolsTranslation, BALANCING_TOOLS_ID, EquipmentSet } from "./IBalancingTools";
+import type Human from "@wayward/game/game/entity/Human";
 
 export default class BalancingTools extends Mod {
 

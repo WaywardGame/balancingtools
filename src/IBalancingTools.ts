@@ -1,16 +1,5 @@
-/*!
- * Copyright 2011-2023 Unlok
- * https://www.unlok.ca
- *
- * Credits & Thanks:
- * https://www.unlok.ca/credits-thanks/
- *
- * Wayward is a copyrighted and licensed work. Modification and/or distribution of any source files is prohibited. If you wish to modify the game in any way, please refer to the modding guide:
- * https://github.com/WaywardGame/types/wiki
- */
-
-import { EquipType } from "game/entity/IHuman";
-import { ItemType } from "game/item/IItem";
+import { EquipType } from "@wayward/game/game/entity/IHuman";
+import { ItemType } from "@wayward/game/game/item/IItem";
 
 export const BALANCING_TOOLS_ID = "Balancing Tools";
 
@@ -149,7 +138,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.TinShield,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.TinSword,
+				itemType: ItemType.TinShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.TinCuirass,
@@ -251,7 +240,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.CopperBuckler,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.CopperSword,
+				itemType: ItemType.CopperShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.CopperCuirass,
@@ -353,7 +342,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.WroughtIronShield,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.WroughtIronSword,
+				itemType: ItemType.WroughtIronShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.WroughtIronBreastplate,
@@ -404,7 +393,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.IronHeater,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.IronSword,
+				itemType: ItemType.IronShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.IronBreastplate,
@@ -455,7 +444,7 @@ export const equipmentSets = new Map<EquipmentSet, IEquipmentSet>([
 				itemType: ItemType.BronzeKiteShield,
 				equipType: EquipType.OffHand,
 			}, {
-				itemType: ItemType.BronzeSword,
+				itemType: ItemType.BronzeShortSword,
 				equipType: EquipType.MainHand,
 			}, {
 				itemType: ItemType.BronzeChestArmor,
