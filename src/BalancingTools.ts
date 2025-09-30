@@ -1,5 +1,4 @@
 import type { ModRegistrationMainDialogPanel } from "@wayward/debugtools";
-import type DebugTools from "@wayward/debugtools";
 import { EventHandler } from "@wayward/game/event/EventManager";
 import type { ActionType } from "@wayward/game/game/entity/action/IAction";
 import Creature from "@wayward/game/game/entity/creature/Creature";
@@ -20,16 +19,10 @@ import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
 import BalancingToolsPanel from "./BalancingToolsPanel";
 import type { ISaveData } from "./IBalancingTools";
-import { BalancingToolsTranslation, BALANCING_TOOLS_ID, EquipmentSet } from "./IBalancingTools";
+import { BALANCING_TOOLS_ID, BalancingToolsTranslation, EquipmentSet } from "./IBalancingTools";
 import type Human from "@wayward/game/game/entity/Human";
 
 export default class BalancingTools extends Mod {
-
-	@Mod.instance(BALANCING_TOOLS_ID)
-	public static readonly INSTANCE: BalancingTools;
-
-	@Mod.instance<DebugTools>("Debug Tools")
-	public readonly DEBUG_TOOLS: DebugTools;
 
 	@Register.interModRegistration<ModRegistrationMainDialogPanel>("Debug Tools", "MainDialogPanel", BalancingToolsPanel)
 	public readonly balancingToolsPanel: InterModRegistration<ModRegistrationMainDialogPanel>;

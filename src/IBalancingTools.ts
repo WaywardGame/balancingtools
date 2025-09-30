@@ -1,7 +1,17 @@
 import { EquipType } from "@wayward/game/game/entity/IHuman";
 import { ItemType } from "@wayward/game/game/item/IItem";
+import Mod from "@wayward/game/mod/Mod";
+import type BalancingTools from "src/BalancingTools";
 
 export const BALANCING_TOOLS_ID = "Balancing Tools";
+
+const modInfo = Mod.get<BalancingTools>();
+export let BalancingToolsInstance: BalancingTools | undefined;
+Object.defineProperty(exports, "BalancingToolsInstance", {
+	get() {
+		return modInfo?.instance;
+	},
+});
 
 export enum BalancingToolsTranslation {
 	PanelName,
