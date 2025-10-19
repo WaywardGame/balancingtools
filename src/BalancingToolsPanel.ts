@@ -16,7 +16,7 @@ import Enums from "@wayward/game/utilities/enum/Enums";
 import { Bound } from "@wayward/utilities/Decorators";
 import { Tuple } from "@wayward/utilities/collection/Tuple";
 // import BalancingTools from "./BalancingTools";
-import { BalancingToolsInstance, BalancingToolsTranslation, EquipmentSet, equipmentSets } from "./IBalancingTools";
+import { GetBalancingToolsInstance, BalancingToolsTranslation, EquipmentSet, equipmentSets } from "./IBalancingTools";
 import SetEquipment from "./action/SetEquipment";
 import SetSkills from "./action/SetSkills";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
@@ -26,7 +26,7 @@ import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 
 function translation(entry: BalancingToolsTranslation): TranslationImpl {
-	return Translation.get(BalancingToolsInstance?.dictionary, entry);
+	return Translation.get(GetBalancingToolsInstance()?.dictionary, entry);
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -40,25 +40,25 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 
 			new CheckButton()
 				.setText(translation(BalancingToolsTranslation.FreezeCreatures))
-				.setRefreshMethod(() => !!BalancingToolsInstance?.saveData.freezeCreatures)
+				.setRefreshMethod(() => !!GetBalancingToolsInstance()?.saveData.freezeCreatures)
 				.event.subscribe("toggle", (_, checked) => this.toggleFreezeCreatures(checked))
 				.appendTo(this);
 
 			new CheckButton()
 				.setText(translation(BalancingToolsTranslation.FreezeNPCs))
-				.setRefreshMethod(() => !!BalancingToolsInstance?.saveData.freezeNPCs)
+				.setRefreshMethod(() => !!GetBalancingToolsInstance()?.saveData.freezeNPCs)
 				.event.subscribe("toggle", (_, checked) => this.toggleFreezeNPCs(checked))
 				.appendTo(this);
 
 			new CheckButton()
 				.setText(translation(BalancingToolsTranslation.DisableAttackCreatures))
-				.setRefreshMethod(() => !!BalancingToolsInstance?.saveData.disableAttackCreatures)
+				.setRefreshMethod(() => !!GetBalancingToolsInstance()?.saveData.disableAttackCreatures)
 				.event.subscribe("toggle", (_, checked) => this.toggleDisableAttackCreatures(checked))
 				.appendTo(this);
 
 			new CheckButton()
 				.setText(translation(BalancingToolsTranslation.DisableAttackNPCs))
-				.setRefreshMethod(() => !!BalancingToolsInstance?.saveData.disableAttackNPCs)
+				.setRefreshMethod(() => !!GetBalancingToolsInstance()?.saveData.disableAttackNPCs)
 				.event.subscribe("toggle", (_, checked) => this.toggleDisableAttackNPCs(checked))
 				.appendTo(this);
 
@@ -126,7 +126,7 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 
 			new ContextMenu(...equipmentSets.keys()
 				.map(equipment => Tuple(EquipmentSet[equipment], {
-					translation: Translation.get(BalancingToolsInstance?.dictionaryEquipment, equipment),
+					translation: Translation.get(GetBalancingToolsInstance()?.dictionaryEquipment, equipment),
 					onActivate: () => this.setEquipment(equipment, this.dropdownItemQuality.selectedOption),
 				})))
 				.addAllDescribedOptions()

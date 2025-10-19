@@ -5,13 +5,8 @@ import type BalancingTools from "src/BalancingTools";
 
 export const BALANCING_TOOLS_ID = "Balancing Tools";
 
-const modInfo = Mod.get<BalancingTools>();
-export let BalancingToolsInstance: BalancingTools | undefined;
-Object.defineProperty(exports, "BalancingToolsInstance", {
-	get() {
-		return modInfo?.instance;
-	},
-});
+const mod = Mod.get<BalancingTools>();
+export const GetBalancingToolsInstance: () => BalancingTools | undefined = () => mod?.instance;
 
 export enum BalancingToolsTranslation {
 	PanelName,
