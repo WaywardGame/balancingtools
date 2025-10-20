@@ -1,6 +1,6 @@
 import type { DebugToolsDialogPanelClass, DebugToolsPanel } from "@wayward/debugtools";
 import { Quality } from "@wayward/game/game/IObject";
-import { SkillType } from "@wayward/game/game/entity/IHuman";
+import { SkillType } from "@wayward/game/game/entity/skill/ISkills";
 import Dictionary from "@wayward/game/language/Dictionary";
 import Translation from "@wayward/game/language/Translation";
 import UiTranslation from "@wayward/game/language/dictionary/UiTranslation";
