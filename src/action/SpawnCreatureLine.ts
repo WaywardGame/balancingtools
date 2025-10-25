@@ -113,8 +113,8 @@ export default new Action()
 				tile.changeTile(i === -2 || i === 3 ? TerrainType.Ash : tierIndex % 2 ? TerrainType.Dirt : TerrainType.BeachSand, false);
 			}
 
-			executor.island.creatures.spawn(creatureType, executor.island.getTile(x, y, executor.z), true, undefined, undefined, true);
-			executor.island.creatures.spawn(creatureType, executor.island.getTile(x + 1, y, executor.z), true, true, undefined, true);
+			executor.island.creatures.spawn(creatureType, executor.island.getTile(x, y, executor.z), { bypassTiles: true, bypassCreatureLimit: true });
+			executor.island.creatures.spawn(creatureType, executor.island.getTile(x + 1, y, executor.z), { bypassTiles: true, forceAberrant: true, bypassCreatureLimit: true });
 
 			yOffset++;
 		}

@@ -1,7 +1,7 @@
 import { Action } from "@wayward/game/game/entity/action/Action";
 import { ActionArgument, ActionUsability } from "@wayward/game/game/entity/action/IAction";
 import { EntityType } from "@wayward/game/game/entity/IEntity";
-import { SkillType } from "@wayward/game/game/entity/IHuman";
+import { SkillType } from "@wayward/game/game/entity/skill/ISkills";
 
 export default new Action(ActionArgument.Float64)
 	.setUsableBy(EntityType.Human)
