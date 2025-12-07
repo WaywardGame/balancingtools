@@ -122,4 +122,5 @@ export default new Action()
 		renderers.computeSpritesInViewport(action.executor);
 		action.setUpdateRender();
 		action.setUpdateView();
-	});
+	})
+	.modRegistration("SpawnCreatureLine");

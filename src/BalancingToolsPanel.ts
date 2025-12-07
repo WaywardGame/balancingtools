@@ -16,7 +16,7 @@ import Enums from "@wayward/game/utilities/enum/Enums";
 import { Bound } from "@wayward/utilities/Decorators";
 import { Tuple } from "@wayward/utilities/collection/Tuple";
 // import BalancingTools from "./BalancingTools";
-import { GetBalancingToolsInstance, BalancingToolsTranslation, EquipmentSet, equipmentSets } from "./IBalancingTools";
+import { GetBalancingToolsInstance, BalancingToolsTranslation, EquipmentSet, equipmentSets, dictionaryBalancingTools, dictionaryEquipmentSet } from "./IBalancingTools";
 import SetEquipment from "./action/SetEquipment";
 import SetSkills from "./action/SetSkills";
 import SpawnCreatureLine from "./action/SpawnCreatureLine";
@@ -26,7 +26,7 @@ import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
 import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
 
 function translation(entry: BalancingToolsTranslation): TranslationImpl {
-	return Translation.get(GetBalancingToolsInstance()?.dictionary, entry);
+	return Translation.get(dictionaryBalancingTools.value, entry);
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -126,7 +126,7 @@ const BalancingToolsPanel = function (DebugToolsPanelClass: typeof DebugToolsPan
 
 			new ContextMenu(...equipmentSets.keys()
 				.map(equipment => Tuple(EquipmentSet[equipment], {
-					translation: Translation.get(GetBalancingToolsInstance()?.dictionaryEquipment, equipment),
+					translation: Translation.get(dictionaryEquipmentSet.value, equipment),
 					onActivate: () => this.setEquipment(equipment, this.dropdownItemQuality.selectedOption),
 				})))
 				.addAllDescribedOptions()

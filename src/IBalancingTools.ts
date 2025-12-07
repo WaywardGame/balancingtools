@@ -19,6 +19,7 @@ export enum BalancingToolsTranslation {
 	DisableAttackCreatures,
 	DisableAttackNPCs,
 }
+export const dictionaryBalancingTools = Mod.register.dictionary("BalancingTools", BalancingToolsTranslation);
 
 export interface ISaveData {
 	freezeCreatures?: boolean;
@@ -39,6 +40,7 @@ export enum EquipmentSet {
 	Bronze,
 	Blackplate,
 }
+export const dictionaryEquipmentSet = Mod.register.dictionary("Equipment", EquipmentSet);
 
 export interface IItemSpawnInfo {
 	itemType: ItemType;

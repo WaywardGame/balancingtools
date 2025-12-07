@@ -24,4 +24,5 @@ export default new Action(ActionArgument.Integer32, ActionArgument.Integer32)
 		}
 
 		action.setPassTurn();
-	});
+	})
+	.modRegistration("SetEquipment");
