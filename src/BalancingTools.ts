@@ -1,67 +1,20 @@
-import type { ModRegistrationMainDialogPanel } from "@wayward/debugtools";
 import { EventHandler } from "@wayward/game/event/EventManager";
-import type { ActionType } from "@wayward/game/game/entity/action/IAction";
 import Creature from "@wayward/game/game/entity/creature/Creature";
 import type { MoveType } from "@wayward/game/game/entity/IEntity";
 import NPC from "@wayward/game/game/entity/npc/NPC";
 import type Tile from "@wayward/game/game/tile/Tile";
-import type Dictionary from "@wayward/game/language/Dictionary";
-import type { InterModRegistration } from "@wayward/game/mod/InterModRegistry";
 import Mod from "@wayward/game/mod/Mod";
-import Register from "@wayward/game/mod/ModRegistry";
-import Actions from "./action/IAction";
-import SetEquipment from "./action/SetEquipment";
-import SetSkills from "./action/SetSkills";
-import SpawnCreatureLine from "./action/SpawnCreatureLine";
-import ToggleCreaturesFrozen from "./action/ToggleCreaturesFrozen";
-import ToggleCreaturesDisableAttack from "./action/ToggleCreaturesDisableAttack";
-import ToggleNPCsFrozen from "./action/ToggleNPCsFrozen";
-import ToggleNPCsDisableAttack from "./action/ToggleNPCsDisableAttack";
 import BalancingToolsPanel from "./BalancingToolsPanel";
 import type { ISaveData } from "./IBalancingTools";
-import { BALANCING_TOOLS_ID, BalancingToolsTranslation, EquipmentSet } from "./IBalancingTools";
+import { BALANCING_TOOLS_ID } from "./IBalancingTools";
 import type Human from "@wayward/game/game/entity/Human";
+
+Mod.register.interModRegistration("Debug Tools", "MainDialogPanel", BalancingToolsPanel);
 
 export default class BalancingTools extends Mod {
 
-	@Register.interModRegistration<ModRegistrationMainDialogPanel>("Debug Tools", "MainDialogPanel", BalancingToolsPanel)
-	public readonly balancingToolsPanel: InterModRegistration<ModRegistrationMainDialogPanel>;
-
-	@Register.dictionary("BalancingTools", BalancingToolsTranslation)
-	public readonly dictionary: Dictionary;
-	@Register.dictionary("Equipment", EquipmentSet)
-	public readonly dictionaryEquipment: Dictionary;
-
 	@Mod.saveData(BALANCING_TOOLS_ID)
 	public readonly saveData: ISaveData;
-
-	@Register.registry(Actions)
-	public actions: Actions;
-
-	////////////////////////////////////
-	// Actions
-	//
-
-	@Register.action("ToggleCreaturesFrozen", ToggleCreaturesFrozen)
-	public readonly actionToggleCreaturesFrozen: ActionType;
-
-	@Register.action("ToggleNPCsFrozen", ToggleNPCsFrozen)
-	public readonly actionToggleNPCsFrozen: ActionType;
-
-	@Register.action("ToggleCreaturesDisableAttack", ToggleCreaturesDisableAttack)
-	public readonly actionToggleCreaturesDisableAttack: ActionType;
-
-	@Register.action("ToggleNPCsDisableAttack", ToggleNPCsDisableAttack)
-	public readonly actionToggleNPCsDisableAttack: ActionType;
-
-	@Register.action("SetEquipment", SetEquipment)
-	public readonly actionSetEquipment: ActionType;
-
-	@Register.action("SetSkills", SetSkills)
-	public readonly actionSetSkills: ActionType;
-
-	@Register.action("SpawnCreatureLine", SpawnCreatureLine)
-	public readonly actionSpawnCreatureLine: ActionType;
 
 	////////////////////////////////////
 	// Event Handlers

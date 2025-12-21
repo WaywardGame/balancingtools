@@ -11,4 +11,5 @@ export default new Action(ActionArgument.Float64)
 		for (const skillType of skillList) {
 			action.executor.skill.setCore(skillType, value);
 		}
-	});
+	})
+	.modRegistration("SetSkills");
