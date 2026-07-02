@@ -13,7 +13,7 @@
 		"@wayward/debugtools": "git://github.com/WaywardGame/debugtools.git#development"
 	},
 	"devDependencies": {
-		"@wayward/types": "^2.15.5-beta.dev.20260701.1",
+		"@wayward/types": "^2.15.5-beta.dev.20260702.1",
 		"typescript": "^6.0.0-beta"
 	}
 }
